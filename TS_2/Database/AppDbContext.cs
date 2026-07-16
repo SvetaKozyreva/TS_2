@@ -24,7 +24,7 @@ namespace TS_2.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Database/FitStudio.db");
+            optionsBuilder.UseSqlite("Data Source=Database/TS.db");
         }
     }
 }

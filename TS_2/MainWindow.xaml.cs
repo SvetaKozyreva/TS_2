@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TS_2.Database;
 
 namespace TS_2
 {
@@ -19,6 +20,12 @@ namespace TS_2
         public MainWindow()
         {
             InitializeComponent();
+            using (var db = new AppDbContext())
+            {
+                int count = db.Users.Count();
+
+                MessageBox.Show($"У базі {count} користувачів");
+            }
         }
     }
 }
