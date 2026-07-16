@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TS_2.Models
 {
-    class Training
+    public class Training
     {
     }
 }

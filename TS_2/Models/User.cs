@@ -3,10 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace TS_2.Models
 {
-    class User
+    public class User
     {
+        [Key]
+        public int UserID { get; set; }
+
+        public string Login { get; set; }
+
+        public string Password { get; set; }
+
+        public string Role { get; set; }
+
+        public string FullName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Photo { get; set; }
+
+        public string Description { get; set; }
+
+        public string Specialization { get; set; }
     }
 }
