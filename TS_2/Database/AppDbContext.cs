@@ -11,6 +11,7 @@ namespace TS_2.Database
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+
         public DbSet<Training> Trainings { get; set; }
 
         public DbSet<TrainingRegistration> TrainingRegistrations { get; set; }

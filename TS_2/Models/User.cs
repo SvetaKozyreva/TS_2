@@ -12,10 +12,13 @@ namespace TS_2.Models
         [Key]
         public int UserID { get; set; }
 
+        [Required]
         public string Login { get; set; }
 
+        [Required]
         public string Password { get; set; }
 
+        [Required]
         public string Role { get; set; }
 
         public string FullName { get; set; }
