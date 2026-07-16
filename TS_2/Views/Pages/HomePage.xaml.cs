@@ -18,9 +18,9 @@ namespace TS_2.Views.Pages
     /// <summary>
     /// Interaction logic for DashboardPage.xaml
     /// </summary>
-    public partial class DashboardPage : Page
+    public partial class HomePage : Page
     {
-        public DashboardPage()
+        public HomePage()
         {
             InitializeComponent();
         }

@@ -1,0 +1,23 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Основні кольори -->
+
+    <SolidColorBrush x:Key="BackgroundColor" Color="#FFFDFC"/>
+
+    <SolidColorBrush x:Key="MenuBackgroundColor" Color="#FDE8E8"/>
+
+    <SolidColorBrush x:Key="PrimaryColor" Color="#C55C5C"/>
+
+    <SolidColorBrush x:Key="PrimaryHoverColor" Color="#B84F4F"/>
+
+    <SolidColorBrush x:Key="CardColor" Color="White"/>
+
+    <SolidColorBrush x:Key="TextColor" Color="#6A5050"/>
+
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="#9B7777"/>
+
+    <SolidColorBrush x:Key="BannerColor" Color="#F9DDDD"/>
+
+</ResourceDictionary>

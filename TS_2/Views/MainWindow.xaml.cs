@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TS_2.Views.Pages;
 
 namespace TS_2.Views
 {
@@ -22,6 +23,27 @@ namespace TS_2.Views
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new HomePage());
+        }
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new HomePage());
+        }
+
+        private void ScheduleButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SchedulePage());
+        }
+
+        private void EventsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new EventsPage());
+        }
+
+        private void AbonementsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AbonementsPage());
         }
     }
+
 }

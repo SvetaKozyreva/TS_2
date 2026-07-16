@@ -1,0 +1,29 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Заголовоки -->
+
+    <Style x:Key="CardTitleStyle" TargetType="TextBlock">
+
+        <Setter Property="FontSize" Value="20"/>
+
+        <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+
+    </Style>
+
+    <!-- текст -->
+
+    <Style x:Key="CardTextStyle" TargetType="TextBlock">
+
+        <Setter Property="FontSize" Value="14"/>
+
+        <Setter Property="Foreground" Value="{StaticResource SecondaryTextColor}"/>
+
+        <Setter Property="TextWrapping" Value="Wrap"/>
+
+    </Style>
+
+</ResourceDictionary>

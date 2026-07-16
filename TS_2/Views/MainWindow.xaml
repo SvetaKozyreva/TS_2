@@ -6,7 +6,134 @@
         xmlns:local="clr-namespace:TS_2.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+
+    <Grid Background="#FFF8F8">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Ліва панель -->
+        <Border Background="#FCE5E5">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="220"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="170"/>
+                </Grid.RowDefinitions>
+
+                <!-- Логотип -->
+                <StackPanel Grid.Row="0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+                    <TextBlock Text="TS"
+                           FontSize="38"
+                           Foreground="#C86D6D"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="TRUSHKINA STRETCHING"
+                           FontSize="14"
+                           Foreground="#9B6B6B"
+                           HorizontalAlignment="Center"/>
+
+                </StackPanel>
+
+                <!-- Меню -->
+                <StackPanel Grid.Row="1">
+
+                    <Button x:Name="HomeButton"
+                            Style="{StaticResource MenuButtonStyle}"
+                        Content="🏠  Головна"
+                        Height="45"
+                        Margin="15,5"
+                        Click="HomeButton_Click"/>
+
+                    <Button x:Name="ScheduleButton"
+                            Style="{StaticResource MenuButtonStyle}"
+                        Content="📅  Розклад"
+                        Height="45"
+                        Margin="15,5"
+                        Click="ScheduleButton_Click"/>
+
+                    <Button x:Name="EventsButton"
+                            Style="{StaticResource MenuButtonStyle}"
+                        Content="⭐  Події"
+                        Height="45"
+                        Margin="15,5"
+                        Click="EventsButton_Click"/>
+
+                    <Button x:Name="AbonementsButton"
+                            Style="{StaticResource MenuButtonStyle}"
+                        Content="💳  Абонементи"
+                        Height="45"
+                        Margin="15,5"
+                        Click="AbonementsButton_Click"/>
+
+                </StackPanel>
+
+                <!-- Мотивація -->
+                <Border Grid.Row="3"
+                    Margin="15"
+                    CornerRadius="15"
+                    Background="White">
+
+                    <StackPanel Margin="10">
+
+                        <TextBlock Text="💖 Мотивація дня"
+                               FontWeight="Bold"
+                               FontSize="16"/>
+
+                        <TextBlock Margin="0,10,0,0"
+                               TextWrapping="Wrap"
+                               FontSize="13"
+                               Text="Кожне тренування робить тебе сильнішою."/>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Правая часть -->
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Верхня панель -->
+            <Border Background="White">
+
+                <Grid>
+
+                    <Button x:Name="LoginButton"
+                            Style="{StaticResource MenuButtonStyle}"
+                        Content="👤 Вхід"
+                        Width="110"
+                        Height="40"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="0,0,20,0"/>
+
+                </Grid>
+
+            </Border>
+
+            <!-- Відкриття сторінок -->
+            <Frame x:Name="MainFrame"
+               Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>
+
+        </Grid>
+
     </Grid>
 </Window>
