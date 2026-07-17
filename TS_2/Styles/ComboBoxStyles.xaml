@@ -1,0 +1,62 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="PinkComboBoxStyle"
+           TargetType="ComboBox">
+
+        <Setter Property="Height" Value="42"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="#6D5555"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="#F5CACA"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Padding" Value="12,0"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ComboBox">
+
+                    <Border
+                        CornerRadius="12"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition/>
+
+                                <ColumnDefinition Width="40"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <ContentPresenter
+                                Margin="12,0,0,0"
+                                VerticalAlignment="Center"/>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                FontSize="18"
+                                Foreground="#C86D6D"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Text="▼"/>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>

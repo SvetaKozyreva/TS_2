@@ -8,7 +8,261 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SchedulePage">
 
+    <Grid Background="#FFFDFD">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Margin="25">
+                <!-- Фільтри -->
+                <Grid Margin="0,0,0,25">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox Grid.Column="0"
+              Style="{StaticResource PinkComboBoxStyle}"
+              SelectedIndex="0">
+
+                        <ComboBoxItem>Усі напрямки</ComboBoxItem>
+                        <ComboBoxItem>Stretching</ComboBoxItem>
+                        <ComboBoxItem>Pilates</ComboBoxItem>
+                        <ComboBoxItem>Reformer</ComboBoxItem>
+
+                    </ComboBox>
+
+                    <ComboBox Grid.Column="2"
+              Style="{StaticResource PinkComboBoxStyle}"
+              SelectedIndex="0">
+
+                        <ComboBoxItem>Усі тренери</ComboBoxItem>
+
+                    </ComboBox>
+
+                    <ComboBox Grid.Column="4"
+              Style="{StaticResource PinkComboBoxStyle}"
+              SelectedIndex="0">
+
+                        <ComboBoxItem>Увесь день</ComboBoxItem>
+                        <ComboBoxItem>Ранок</ComboBoxItem>
+                        <ComboBoxItem>День</ComboBoxItem>
+                        <ComboBoxItem>Вечір</ComboBoxItem>
+
+                    </ComboBox>
+
+                </Grid>
+
+                <!-- Дні тижня -->
+
+                <Grid Margin="0,0,0,25">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="45"/>
+
+                        <ColumnDefinition Width="*"/>
+
+                        <ColumnDefinition Width="45"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Стрілка вліво -->
+
+                    <Button Grid.Column="0"
+        Content="◀"
+        Style="{StaticResource ArrowButtonStyle}"/>
+
+                    <!-- Дні -->
+
+                    <UniformGrid Grid.Column="1"
+                 Columns="7">
+
+                        <!-- Понеділок -->
+
+                        <Button Style="{StaticResource DayButtonStyle}"
+                Background="#C86D6D"
+                Foreground="White">
+
+                            <StackPanel>
+
+                                <TextBlock Text="ПН"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="14.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- Вівторок -->
+
+                        <Button Style="{StaticResource DayButtonStyle}">
+
+                            <StackPanel>
+
+                                <TextBlock Text="ВТ"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="15.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- Середа -->
+
+                        <Button Style="{StaticResource DayButtonStyle}">
+
+                            <StackPanel>
+
+                                <TextBlock Text="СР"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="16.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- Четвер -->
+
+                        <Button Style="{StaticResource DayButtonStyle}">
+
+                            <StackPanel>
+
+                                <TextBlock Text="ЧТ"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="17.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- П'ятниця -->
+
+                        <Button Style="{StaticResource DayButtonStyle}">
+
+                            <StackPanel>
+
+                                <TextBlock Text="ПТ"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="18.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- Субота -->
+
+                        <Button Style="{StaticResource DayButtonStyle}">
+
+                            <StackPanel>
+
+                                <TextBlock Text="СБ"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="19.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- Неділя -->
+
+                        <Button Style="{StaticResource DayButtonStyle}">
+
+                            <StackPanel>
+
+                                <TextBlock Text="НД"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="20.07"
+                           FontSize="12"
+                           HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                    </UniformGrid>
+
+                    <!-- Стрілка вправо -->
+                    <Button Grid.Column="2"
+        Content="▶"
+        Style="{StaticResource ArrowButtonStyle}"/>
+
+                </Grid>
+                <Border Style="{StaticResource CardStyle}"
+        Margin="0,0,0,15">
+
     <Grid>
-        
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition/>
+
+            <ColumnDefinition Width="170"/>
+
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+
+            <TextBlock
+                Text="Stretching"
+                Style="{StaticResource CardTitleStyle}"/>
+
+            <TextBlock
+                Margin="0,10,0,0"
+                Text="18:00 - 19:00"
+                Style="{StaticResource CardTextStyle}"/>
+
+            <TextBlock
+                Text="Тренер: Анна"
+                Style="{StaticResource CardTextStyle}"/>
+
+            <TextBlock
+                Text="Велика зала"
+                Style="{StaticResource CardTextStyle}"/>
+
+        </StackPanel>
+
+        <Button Grid.Column="1"
+                Width="130"
+                Height="40"
+                Content="Записатися"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Style="{StaticResource PrimaryButtonStyle}"/>
+
+    </Grid>
+
+</Border>
+            </StackPanel>
+
+        </ScrollViewer>
     </Grid>
 </Page>

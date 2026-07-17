@@ -113,19 +113,33 @@
             </Grid.RowDefinitions>
 
             <!-- Верхня панель -->
-            <Border Background="White">
+            <Border Grid.Row="0"
+        Background="White"
+        Margin="15,15,15,10"
+        CornerRadius="15">
 
                 <Grid>
 
-                    <Button x:Name="LoginButton"
-                            Style="{StaticResource MenuButtonStyle}"
-                        Content="👤 Вхід"
-                        Width="110"
-                        Height="40"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Margin="0,0,20,0"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
+                    <!-- Заголовок -->
+                    <TextBlock
+            Text="Головна"
+            FontSize="20"
+            FontWeight="SemiBold"
+            Foreground="#6D5555"
+            VerticalAlignment="Center"
+            Margin="25,0"/>
+
+                    <!-- Кнопка входу -->
+                    <Button Grid.Column="1"
+                x:Name="LoginButton"
+                Style="{StaticResource LoginButtonStyle}"
+                Content="👤 Вхід"
+                Margin="0,0,20,0"/>
                 </Grid>
 
             </Border>

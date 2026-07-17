@@ -57,6 +57,7 @@
                 Style="{StaticResource PrimaryButtonStyle}" />
 
                     </StackPanel>
+                    
 
                 </Grid>
 
@@ -64,14 +65,15 @@
             <Grid Grid.Row="1" Margin="0,0,0,20">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="352*"/>
                     <ColumnDefinition Width="20"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="281*"/>
+                    <ColumnDefinition Width="71*"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Левая карточка -->
                 <Border Grid.Column="0"
-            Style="{StaticResource CardStyle}">
+            Style="{StaticResource CardStyle}" Margin="10,10,10,10">
 
                     <StackPanel>
 
@@ -101,7 +103,7 @@
 
                 <!-- Правая карточка -->
                 <Border Grid.Column="2"
-            Style="{StaticResource CardStyle}">
+            Style="{StaticResource CardStyle}" Grid.ColumnSpan="2" Margin="10,10,10,10">
 
                     <StackPanel>
 
@@ -130,6 +132,74 @@
                 </Border>
 
             </Grid>
+            <Grid Grid.Row="2" Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Акції -->
+                <Border Grid.Column="0"
+            Style="{StaticResource CardStyle}">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Акції"
+                       Style="{StaticResource CardTitleStyle}"/>
+
+                        <TextBlock Margin="0,15,0,0"
+                       Text="🎁 -20% на перше тренування"
+                       Style="{StaticResource CardTextStyle}"/>
+
+                        <TextBlock Margin="0,8,0,0"
+                       Text="💳 Знижка на абонементи до кінця місяця"
+                       Style="{StaticResource CardTextStyle}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+                <!-- Новини -->
+                <Border Grid.Column="2"
+            Style="{StaticResource CardStyle}">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Новини"
+                       Style="{StaticResource CardTitleStyle}"/>
+
+                        <TextBlock Margin="0,15,0,0"
+                       Text="✨ У студії з'явився новий тренер."
+                       Style="{StaticResource CardTextStyle}"/>
+
+                        <TextBlock Margin="0,8,0,0"
+                       Text="📢 Відкрито нові групи Pilates."
+                       Style="{StaticResource CardTextStyle}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+            <Border Grid.Row="3"
+        Style="{StaticResource CardStyle}">
+
+                <StackPanel>
+
+                    <TextBlock Text="💖 Мотивація дня"
+                   Style="{StaticResource CardTitleStyle}"/>
+
+                    <TextBlock Margin="0,15,0,0"
+                   FontSize="16"
+                   FontStyle="Italic"
+                   Text="Маленькі кроки кожного дня приводять до великих результатів."
+                   Style="{StaticResource CardTextStyle}"/>
+
+                </StackPanel>
+
+            </Border>
 
         </Grid>
 
