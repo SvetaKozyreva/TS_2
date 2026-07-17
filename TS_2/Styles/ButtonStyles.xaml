@@ -8,7 +8,7 @@
         <Setter Property="Margin" Value="15,5"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="#6D5555"/>
+        <Setter Property="Foreground" Value="#B75252"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
 
@@ -125,7 +125,7 @@
         <Setter Property="Height" Value="42"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="#C86D6D"/>
+        <Setter Property="Foreground" Value="#B75252"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="#E8CACA"/>
         <Setter Property="BorderThickness" Value="1.5"/>
@@ -174,13 +174,12 @@
        TargetType="Button">
 
         <Setter Property="Width" Value="95"/>
-        <Setter Property="Height" Value="70"/>
+        <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="4"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="#6D5555"/>
-        <Setter Property="BorderBrush" Value="#F3D8D8"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#FFE5E5"/>
+        <Setter Property="Foreground" Value="#B75252"/>
         <Setter Property="Cursor" Value="Hand"/>
+        
 
         <Setter Property="Template">
 
@@ -190,15 +189,15 @@
 
                     <Border x:Name="border"
                         Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="14">
+                        CornerRadius="7">
+
 
                         <ContentPresenter
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"/>
 
                     </Border>
+                    
 
                     <ControlTemplate.Triggers>
 
@@ -218,6 +217,7 @@
             </Setter.Value>
 
         </Setter>
+       
 
     </Style>
 
@@ -245,11 +245,36 @@
                         VerticalAlignment="Center"/>
 
                     </Border>
+                    
 
                 </ControlTemplate>
 
             </Setter.Value>
 
+        </Setter>
+
+    </Style>
+    <Style x:Key="ActiveDayButtonStyle"
+       BasedOn="{StaticResource DayButtonStyle}"
+       TargetType="Button">
+
+        <Setter Property="Background"
+            Value="#FAC2C2"/>
+
+        <Setter Property="Foreground"
+            Value="#B75252"/>
+
+        <Setter Property="BorderBrush"
+            Value="#C96D6D"/>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect
+                BlurRadius="18"
+                ShadowDepth="2"
+                Opacity="0.22"
+                Color="#E8A8A8"/>
+            </Setter.Value>
         </Setter>
 
     </Style>

@@ -23,26 +23,56 @@ namespace TS_2.Views
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new HomePage());
+            OpenPage(new HomePage(),
+         "Головна",
+         HomeButton);
+
         }
+
+
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new HomePage());
+            OpenPage(new HomePage(),
+         "Головна",
+         HomeButton);
         }
 
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new SchedulePage());
+            OpenPage(new SchedulePage(),
+             "Розклад",
+             ScheduleButton);
         }
 
         private void EventsButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new EventsPage());
+            OpenPage(new EventsPage(),
+             "Події",
+             EventsButton);
         }
 
         private void AbonementsButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new AbonementsPage());
+            OpenPage(new AbonementsPage(),
+             "Абонементи",
+             AbonementsButton);
+        }
+        private void OpenPage(Page page, string title, Button activeButton)
+        {
+            // Открываем страницу
+            MainFrame.Navigate(page);
+
+            // Меняем заголовок
+            PageTitle.Text = title;
+
+            // Снимаем подсветку со всех кнопок
+            HomeButton.Style = (Style)FindResource("MenuButtonStyle");
+            ScheduleButton.Style = (Style)FindResource("MenuButtonStyle");
+            EventsButton.Style = (Style)FindResource("MenuButtonStyle");
+            AbonementsButton.Style = (Style)FindResource("MenuButtonStyle");
+
+            // Подсвечиваем активную кнопку
+            activeButton.Style = (Style)FindResource("PrimaryButtonStyle");
         }
     }
 

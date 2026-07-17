@@ -57,163 +57,122 @@
 
                 <!-- Дні тижня -->
 
-                <Grid Margin="0,0,0,25">
+                <Grid Margin="0,0,0,20">
 
                     <Grid.ColumnDefinitions>
-
                         <ColumnDefinition Width="45"/>
-
                         <ColumnDefinition Width="*"/>
-
                         <ColumnDefinition Width="45"/>
-
                     </Grid.ColumnDefinitions>
 
-                    <!-- Стрілка вліво -->
-
+                    <!-- Левая стрелка -->
                     <Button Grid.Column="0"
-        Content="◀"
-        Style="{StaticResource ArrowButtonStyle}"/>
+            Style="{StaticResource ArrowButtonStyle}"
+            Content="◀"/>
 
-                    <!-- Дні -->
+                    <!-- Дни -->
+                    <Border Grid.Column="1"
+            Background="#FFE5E5"
+            CornerRadius="10"
+            Padding="1">
+                        <Border.Effect>
 
-                    <UniformGrid Grid.Column="1"
-                 Columns="7">
+                            <DropShadowEffect
+            BlurRadius="20"
+            ShadowDepth="2"
+            Opacity="0.22"
+            Color="#E8B4B4"/>
 
-                        <!-- Понеділок -->
+                        </Border.Effect>
 
-                        <Button Style="{StaticResource DayButtonStyle}"
-                Background="#C86D6D"
-                Foreground="White">
+                        <UniformGrid Columns="7">
 
-                            <StackPanel>
+                            <!-- ПН -->
+                            <Button Style="{StaticResource ActiveDayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="ПН"
+                               HorizontalAlignment="Center"
+                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="14.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                                <TextBlock Text="ПН"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
+                            <!-- ВТ -->
+                            <Button Style="{StaticResource DayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="ВТ"
+                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="15.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                                <TextBlock Text="14.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
+                            <!-- СР -->
+                            <Button Style="{StaticResource DayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="СР"
+                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="16.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                            </StackPanel>
+                            <!-- ЧТ -->
+                            <Button Style="{StaticResource DayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="ЧТ"
+                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="17.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                        </Button>
+                            <!-- ПТ -->
+                            <Button Style="{StaticResource DayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="ПТ"
+                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="18.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                        <!-- Вівторок -->
+                            <!-- СБ -->
+                            <Button Style="{StaticResource DayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="СБ"
+                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="19.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                        <Button Style="{StaticResource DayButtonStyle}">
+                            <!-- НД -->
+                            <Button Style="{StaticResource DayButtonStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="НД"
+                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="20.07"
+                               HorizontalAlignment="Center"
+                               FontSize="12"/>
+                                </StackPanel>
+                            </Button>
 
-                            <StackPanel>
+                        </UniformGrid>
 
-                                <TextBlock Text="ВТ"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
+                    </Border>
 
-                                <TextBlock Text="15.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                        <!-- Середа -->
-
-                        <Button Style="{StaticResource DayButtonStyle}">
-
-                            <StackPanel>
-
-                                <TextBlock Text="СР"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
-
-                                <TextBlock Text="16.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                        <!-- Четвер -->
-
-                        <Button Style="{StaticResource DayButtonStyle}">
-
-                            <StackPanel>
-
-                                <TextBlock Text="ЧТ"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
-
-                                <TextBlock Text="17.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                        <!-- П'ятниця -->
-
-                        <Button Style="{StaticResource DayButtonStyle}">
-
-                            <StackPanel>
-
-                                <TextBlock Text="ПТ"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
-
-                                <TextBlock Text="18.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                        <!-- Субота -->
-
-                        <Button Style="{StaticResource DayButtonStyle}">
-
-                            <StackPanel>
-
-                                <TextBlock Text="СБ"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
-
-                                <TextBlock Text="19.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                        <!-- Неділя -->
-
-                        <Button Style="{StaticResource DayButtonStyle}">
-
-                            <StackPanel>
-
-                                <TextBlock Text="НД"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Center"/>
-
-                                <TextBlock Text="20.07"
-                           FontSize="12"
-                           HorizontalAlignment="Center"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                    </UniformGrid>
-
-                    <!-- Стрілка вправо -->
+                    <!-- Правая стрелка -->
                     <Button Grid.Column="2"
-        Content="▶"
-        Style="{StaticResource ArrowButtonStyle}"/>
+            Style="{StaticResource ArrowButtonStyle}"
+            Content="▶"/>
 
                 </Grid>
                 <Border Style="{StaticResource CardStyle}"

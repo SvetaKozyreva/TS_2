@@ -127,6 +127,7 @@
 
                     <!-- Заголовок -->
                     <TextBlock
+                        x:Name="PageTitle"
             Text="Головна"
             FontSize="20"
             FontWeight="SemiBold"

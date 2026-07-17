@@ -5,7 +5,8 @@
     <Style x:Key="PinkComboBoxStyle"
            TargetType="ComboBox">
 
-        <Setter Property="Height" Value="42"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="200"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="#6D5555"/>
         <Setter Property="Background" Value="White"/>
@@ -24,6 +25,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
+
 
                         <Grid>
 
