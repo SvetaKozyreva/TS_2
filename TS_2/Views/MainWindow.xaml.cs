@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TS_2.Views.Pages;
 
+
 namespace TS_2.Views
 {
     /// <summary>
@@ -59,20 +60,26 @@ namespace TS_2.Views
         }
         private void OpenPage(Page page, string title, Button activeButton)
         {
-            // Открываем страницу
             MainFrame.Navigate(page);
 
-            // Меняем заголовок
             PageTitle.Text = title;
 
-            // Снимаем подсветку со всех кнопок
             HomeButton.Style = (Style)FindResource("MenuButtonStyle");
             ScheduleButton.Style = (Style)FindResource("MenuButtonStyle");
             EventsButton.Style = (Style)FindResource("MenuButtonStyle");
             AbonementsButton.Style = (Style)FindResource("MenuButtonStyle");
 
-            // Подсвечиваем активную кнопку
-            activeButton.Style = (Style)FindResource("PrimaryButtonStyle");
+            if (activeButton != null)
+            {
+                activeButton.Style = (Style)FindResource("PrimaryButtonStyle");
+            }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenPage(new LoginPage(),
+             "Вхід",
+             null);
         }
     }
 

@@ -137,10 +137,11 @@
 
                     <!-- Кнопка входу -->
                     <Button Grid.Column="1"
+                            
                 x:Name="LoginButton"
                 Style="{StaticResource LoginButtonStyle}"
                 Content="👤 Вхід"
-                Margin="0,0,20,0"/>
+                Margin="0,0,20,0" Click="LoginButton_Click"/>
                 </Grid>
 
             </Border>

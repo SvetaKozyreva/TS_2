@@ -14,7 +14,7 @@
 
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="18,0,0,0"/>
+        <Setter Property="Padding" Value="18,0,18,0"/>
 
         <Setter Property="Cursor" Value="Hand"/>
 

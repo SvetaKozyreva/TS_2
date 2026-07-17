@@ -1,0 +1,53 @@
+﻿<Page x:Class="TS_2.Views.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Background="#FFF8F8">
+
+        <Border Width="430"
+                Padding="35"
+                Background="White"
+                CornerRadius="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+            <StackPanel>
+
+                <TextBlock
+                    Text="Вхід"
+                    FontSize="28"
+                    FontWeight="Bold"
+                    Foreground="#C86D6D"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock Margin="0,25,0,5"
+                           Text="Логін"/>
+
+                <TextBox x:Name="LoginBox"
+                         Height="38"/>
+
+                <TextBlock Margin="0,15,0,5"
+                           Text="Пароль"/>
+
+                <PasswordBox x:Name="PasswordBox"
+                             Height="38"/>
+
+                <Button
+                    Margin="0,25,0,0"
+                    Height="42"
+                    Content="Увійти"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <Button
+                    Margin="0,15,0,0"
+                    Content="Створити акаунт"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource MenuButtonStyle}" Click="Button_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Page>
