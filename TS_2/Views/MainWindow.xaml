@@ -48,7 +48,7 @@
                 <StackPanel Grid.Row="1">
 
                     <Button x:Name="HomeButton"
-                            Style="{StaticResource MenuButtonStyle}"
+                            Style="{StaticResource PrimaryButtonStyle}"
                         Content="🏠  Головна"
                         Height="45"
                         Margin="15,5"
@@ -56,6 +56,8 @@
 
                     <Button x:Name="ScheduleButton"
                             Style="{StaticResource MenuButtonStyle}"
+                            HorizontalContentAlignment="Left"
+                        Padding="18,0,0,0"
                         Content="📅  Розклад"
                         Height="45"
                         Margin="15,5"

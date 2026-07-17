@@ -2,24 +2,78 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Кольори -->
-    <SolidColorBrush x:Key="PinkColor" Color="#C86D6D"/>
-    <SolidColorBrush x:Key="PinkHover" Color="#B85C5C"/>
-    <SolidColorBrush x:Key="MenuColor" Color="#FCE5E5"/>
-    <SolidColorBrush x:Key="WhiteColor" Color="White"/>
-
-    <!-- Стиль меню -->
     <Style x:Key="MenuButtonStyle" TargetType="Button">
 
         <Setter Property="Height" Value="45"/>
         <Setter Property="Margin" Value="15,5"/>
         <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Foreground" Value="#6D5555"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Padding" Value="20,0,0,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="18,0,0,0"/>
+
         <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="12">
+
+                        <ContentPresenter
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Margin="{TemplateBinding Padding}"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border"
+                                Property="Background"
+                                Value="#F6CFCF"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border"
+                                Property="Background"
+                                Value="#E8B6B6"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="42"/>
+
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#C86D6D"/>
+
+        <Setter Property="BorderThickness" Value="0"/>
+
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         <Setter Property="Template">
 
@@ -27,14 +81,13 @@
 
                 <ControlTemplate TargetType="Button">
 
-                    <Border
-                        x:Name="border"
-                        CornerRadius="12"
-                        Background="{TemplateBinding Background}">
+                    <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="14">
 
                         <ContentPresenter
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
 
                     </Border>
 
@@ -43,8 +96,16 @@
                         <Trigger Property="IsMouseOver" Value="True">
 
                             <Setter TargetName="border"
-                                    Property="Background"
-                                    Value="#F6CFCF"/>
+                            Property="Background"
+                            Value="#B85C5C"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Setter TargetName="border"
+                            Property="Background"
+                            Value="#A94C4C"/>
 
                         </Trigger>
 
