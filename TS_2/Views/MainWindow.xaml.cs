@@ -92,15 +92,31 @@ namespace TS_2.Views
                 MainFrame.Navigate(new ProfilePage());
             }
         }
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageTitle.Text = "Адмін-панель";
+            MainFrame.Navigate(new AdminPage());
+        }
         public void UpdateUser()
         {
             if (Session.CurrentUser != null)
             {
                 LoginButton.Content = "👤 " + Session.CurrentUser.FullName;
+
+                // Показываем кнопку админ-панели только админу
+                if (Session.CurrentUser.Role == "Адміністратор")
+                {
+                    AdminButton.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    AdminButton.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {
                 LoginButton.Content = "👤 Вхід";
+                AdminButton.Visibility = Visibility.Collapsed;
             }
         }
         public void Navigate(Page page, string title)

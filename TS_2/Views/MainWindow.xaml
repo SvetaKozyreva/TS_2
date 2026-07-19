@@ -76,6 +76,13 @@
                         Height="45"
                         Margin="15,5"
                         Click="AbonementsButton_Click"/>
+                    <Button x:Name="AdminButton"
+        Style="{StaticResource MenuButtonStyle}"
+        Content="⚙ Адмін-панель"
+        Height="45"
+        Margin="15,5"
+        Visibility="Collapsed"
+        Click="AdminButton_Click"/>
 
                 </StackPanel>
 

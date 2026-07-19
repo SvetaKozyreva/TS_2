@@ -24,6 +24,34 @@
 
                 <TextBox x:Name="NameBox"
                          Height="38"/>
+                <TextBlock
+    Text="Роль"
+    Margin="0,15,0,5"/>
+
+                <ComboBox
+    x:Name="RoleBox"
+    Height="40"
+    SelectedIndex="0"
+    SelectionChanged="RoleBox_SelectionChanged">
+
+                    <ComboBoxItem Content="Клієнт"/>
+                    <ComboBoxItem Content="Тренер"/>
+                    <ComboBoxItem Content="Адміністратор"/>
+
+                </ComboBox>
+                <StackPanel x:Name="SecretPanel"
+            Visibility="Collapsed">
+
+                    <TextBlock
+        x:Name="SecretText"
+        Margin="0,15,0,5"
+        Text="Секретний код"/>
+
+                    <PasswordBox
+        x:Name="SecretPasswordBox"
+        Height="40"/>
+
+                </StackPanel>
 
                 <TextBlock Margin="0,15,0,5"
                            Text="Телефон"/>

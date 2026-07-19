@@ -36,6 +36,25 @@ namespace TS_2.Views.Pages
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
+            string role = ((ComboBoxItem)RoleBox.SelectedItem).Content.ToString();
+
+            if (role == "Тренер")
+            {
+                if (SecretPasswordBox.Password != "TS_TRAINER_2026")
+                {
+                    MessageBox.Show("Невірний секретний код тренера.");
+                    return;
+                }
+            }
+
+            if (role == "Адміністратор")
+            {
+                if (SecretPasswordBox.Password != "TS_ADMIN_2026")
+                {
+                    MessageBox.Show("Невірний секретний код адміністратора.");
+                    return;
+                }
+            }
             using (AppDbContext db = new AppDbContext())
             {
                 if (db.Users.Any(u => u.Login == LoginBox.Text))
@@ -51,7 +70,7 @@ namespace TS_2.Views.Pages
                 user.Phone = PhoneBox.Text;
                 user.Login = LoginBox.Text;
                 user.Password = PasswordBox.Password;
-                user.Role = "Client";
+                user.Role = role;
 
                 db.Users.Add(user);
 
@@ -62,6 +81,29 @@ namespace TS_2.Views.Pages
                 MessageBox.Show("Акаунт успішно створено!");
 
                 NavigationService.Navigate(new LoginPage());
+            }
+
+        }
+        private void RoleBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SecretPanel == null || SecretText == null || RoleBox.SelectedItem == null)
+                return;
+
+            string role = ((ComboBoxItem)RoleBox.SelectedItem).Content.ToString();
+
+            if (role == "Клієнт")
+            {
+                SecretPanel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                SecretPanel.Visibility = Visibility.Visible;
+
+                if (role == "Тренер")
+                    SecretText.Text = "Секретний код тренера";
+
+                if (role == "Адміністратор")
+                    SecretText.Text = "Секретний код адміністратора";
             }
         }
     }
