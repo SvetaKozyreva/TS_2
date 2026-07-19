@@ -36,7 +36,7 @@
                     Margin="0,25,0,0"
                     Height="42"
                     Content="Увійти"
-                    Style="{StaticResource PrimaryButtonStyle}"/>
+                    Style="{StaticResource PrimaryButtonStyle}" Click="LoginBtn_Click"/>
 
                 <Button
                     Margin="0,15,0,0"

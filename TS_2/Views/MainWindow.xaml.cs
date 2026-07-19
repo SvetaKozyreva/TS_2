@@ -77,9 +77,18 @@ namespace TS_2.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenPage(new LoginPage(),
-             "Вхід",
-             null);
+            MainFrame.Navigate(new LoginPage());
+        }
+        public void UpdateUser()
+        {
+            if (Helpers.Session.IsLoggedIn)
+            {
+                LoginButton.Content = $"👤 {Helpers.Session.CurrentUser.FullName}";
+            }
+            else
+            {
+                LoginButton.Content = "👤 Вхід";
+            }
         }
     }
 
