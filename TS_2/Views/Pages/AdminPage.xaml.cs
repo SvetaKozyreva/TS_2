@@ -24,5 +24,24 @@ namespace TS_2.Views.Pages
         {
             InitializeComponent();
         }
+        private void Users_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new AdminUsersPage());
+        }
+
+        private void Trainings_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new AdminTrainingsPage());
+        }
+
+        private void Events_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new AdminEventsPage());
+        }
+
+        private void Abonements_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new AdminAbonementsPage());
+        }
     }
 }

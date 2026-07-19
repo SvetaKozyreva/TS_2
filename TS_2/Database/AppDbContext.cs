@@ -27,8 +27,6 @@ namespace TS_2.Database
         {
             string path = System.IO.Path.GetFullPath("Database/TS.db");
 
-            MessageBox.Show(path);
-
             optionsBuilder.UseSqlite($"Data Source={path}");
         }
     }
