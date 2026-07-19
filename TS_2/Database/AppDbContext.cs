@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TS_2.Models;
 
 namespace TS_2.Database
@@ -24,7 +25,11 @@ namespace TS_2.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Database/TS.db");
+            string path = System.IO.Path.GetFullPath("Database/TS.db");
+
+            MessageBox.Show(path);
+
+            optionsBuilder.UseSqlite($"Data Source={path}");
         }
     }
 }

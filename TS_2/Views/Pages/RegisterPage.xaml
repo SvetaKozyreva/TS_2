@@ -46,7 +46,7 @@
                 <Button Margin="0,30,0,0"
                         Height="42"
                         Content="Створити акаунт"
-                        Style="{StaticResource PrimaryButtonStyle}"/>
+                        Style="{StaticResource PrimaryButtonStyle}" Click="CreateAccount_Click"/>
 
                 <Button Margin="0,15,0,0"
                         Content="Назад до входу"
