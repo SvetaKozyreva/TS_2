@@ -142,6 +142,7 @@
                 Style="{StaticResource LoginButtonStyle}"
                 Content="👤 Вхід"
                 Margin="0,0,20,0" Click="LoginButton_Click"/>
+                    
                 </Grid>
 
             </Border>

@@ -8,7 +8,149 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
 
-    <Grid>
-        
+    <Grid Background="#FFF8F8">
+
+        <ScrollViewer>
+
+            <StackPanel Margin="30">
+
+                <TextBlock
+                Text="Мій профіль"
+                FontSize="28"
+                FontWeight="SemiBold"
+                Foreground="#6D5555"/>
+
+                <!-- Верхня картка -->
+
+                <Border Style="{StaticResource CardStyle}"
+                    Margin="0,25,0,0">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="170"/>
+
+                            <ColumnDefinition/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Аватар -->
+
+                        <Border Width="120"
+                            Height="120"
+                            CornerRadius="60"
+                            Background="#FCE5E5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+                            <TextBlock Text="👤"
+                                   FontSize="60"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <!-- Дані -->
+
+                        <StackPanel Grid.Column="1"
+                                Margin="25">
+
+                            <TextBlock x:Name="FullNameText"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   Foreground="#6D5555"/>
+
+                            <TextBlock x:Name="LoginText"
+                                   Margin="0,15,0,0"
+                                   FontSize="16"/>
+
+                            <TextBlock x:Name="PhoneText"
+                                   Margin="0,8,0,0"
+                                   FontSize="16"/>
+
+                            <TextBlock x:Name="RoleText"
+                                   Margin="0,8,0,0"
+                                   FontSize="16"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+                <Grid Margin="0,25,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Абонемент -->
+                    <Border Grid.Column="0"
+            Style="{StaticResource CardStyle}">
+
+                        <StackPanel>
+
+                            <TextBlock Text="🎫 Мій абонемент"
+                       Style="{StaticResource CardTitleStyle}"/>
+
+                            <TextBlock Margin="0,20,0,5"
+                       x:Name="AbonementText"
+                       Text="Активний абонемент відсутній"
+                       Style="{StaticResource CardTextStyle}"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                    <!-- Тренування -->
+                    <Border Grid.Column="2"
+            Style="{StaticResource CardStyle}">
+
+                        <StackPanel>
+
+                            <TextBlock Text="🏋 Найближче тренування"
+                       Style="{StaticResource CardTitleStyle}"/>
+
+                            <TextBlock Margin="0,20,0,5"
+                       x:Name="TrainingText"
+                       Text="Немає записів"
+                       Style="{StaticResource CardTextStyle}"/>
+                            <Button
+                        Margin="0,20,0,0"
+                        Width="150"
+                        Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Content="Усі записи"
+                        Click="MyTrainings_Click"/>         
+
+                        </StackPanel>
+                        
+
+                    </Border>
+                    
+
+                </Grid>
+                <StackPanel Margin="0,25,0,0">
+
+                    <Button Height="45"
+            Margin="0,0,0,15"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Content="Редагувати профіль"
+            Click="EditProfile_Click"/>
+
+                    <Button Height="45"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Content="Вийти з акаунта"
+            Click="Logout_Click"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
     </Grid>
 </Page>

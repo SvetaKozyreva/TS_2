@@ -215,7 +215,8 @@
                 Content="Записатися"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right"
-                Style="{StaticResource PrimaryButtonStyle}"/>
+                Style="{StaticResource PrimaryButtonStyle}"
+                Click="RegisterTraining_Click"/>
 
     </Grid>
 

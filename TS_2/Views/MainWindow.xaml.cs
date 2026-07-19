@@ -11,7 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TS_2.Helpers;
+using TS_2.Models;
 using TS_2.Views.Pages;
+
 
 
 namespace TS_2.Views
@@ -29,6 +32,9 @@ namespace TS_2.Views
          HomeButton);
 
         }
+        public Frame Frame => MainFrame;
+        public TextBlock PageTitleControl => PageTitle;
+        public User CurrentUser { get; set; }
 
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
@@ -77,19 +83,34 @@ namespace TS_2.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new LoginPage());
+            if (Session.CurrentUser == null)
+            {
+                MainFrame.Navigate(new LoginPage());
+            }
+            else
+            {
+                MainFrame.Navigate(new ProfilePage());
+            }
         }
         public void UpdateUser()
         {
-            if (Helpers.Session.IsLoggedIn)
+            if (Session.CurrentUser != null)
             {
-                LoginButton.Content = $"👤 {Helpers.Session.CurrentUser.FullName}";
+                LoginButton.Content = "👤 " + Session.CurrentUser.FullName;
             }
             else
             {
                 LoginButton.Content = "👤 Вхід";
             }
         }
+        public void Navigate(Page page, string title)
+        {
+            MainFrame.Navigate(page);
+            PageTitle.Text = title;
+        }
+
+
+
     }
 
 }
