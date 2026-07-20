@@ -4,47 +4,124 @@
 
     <Grid Background="#FFF8F8">
 
-        <StackPanel Margin="25">
+        <Grid Margin="30">
 
-            <TextBlock Text="🏋 Керування тренуваннями"
-                       FontSize="28"
-                       FontWeight="SemiBold"
-                       Foreground="#6D5555"
-                       Margin="0,0,0,20"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <Button x:Name="AddTrainingButton"
-                    Content="+ Додати тренування"
-                    Width="220"
-                    Height="42"
-                    HorizontalAlignment="Left"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Click="AddTraining_Click"/>
+            <!-- Верх -->
 
-            <DataGrid x:Name="TrainingsGrid"
-                      Margin="0,25,0,0"
-                      AutoGenerateColumns="False"
-                      CanUserAddRows="False"
-                      IsReadOnly="True">
+            <Grid>
 
-                <DataGrid.Columns>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                    <DataGridTextColumn Header="Назва"
-                                        Binding="{Binding Name}"/>
+                <TextBlock
+                Text="🏋 Керування тренуваннями"
+                FontSize="30"
+                FontWeight="Bold"
+                Foreground="#6D5555"
+                VerticalAlignment="Center"/>
 
-                    <DataGridTextColumn Header="Дата"
-                                        Binding="{Binding Date}"/>
+                <Button
+                Grid.Column="1"
+                Width="190"
+                Height="45"
+                Content="+ Додати тренування"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Click="AddTraining_Click"/>
 
-                    <DataGridTextColumn Header="Час"
-                                        Binding="{Binding Time}"/>
+            </Grid>
 
-                    <DataGridTextColumn Header="Макс. місць"
-                                        Binding="{Binding MaxPlaces}"/>
+            <!-- Карточка -->
 
-                </DataGrid.Columns>
+            <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="18"
+                Padding="20">
 
-            </DataGrid>
+                <DataGrid
+                x:Name="TrainingsGrid"
+                AutoGenerateColumns="False"
+                HeadersVisibility="Column"
+                GridLinesVisibility="None"
+                BorderThickness="0"
+                RowBackground="White"
+                AlternatingRowBackground="#FFF8F8"
+                CanUserAddRows="False"
+                IsReadOnly="True">
 
-        </StackPanel>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn
+                        Header="Назва"
+                        Width="*"
+                        Binding="{Binding Name}"
+                        ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTextColumn
+                        Header="Дата"
+                        Width="1*"
+                        Binding="{Binding Date}"
+                        ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTextColumn
+                        Header="Час"
+                        Width="1*"
+                        Binding="{Binding Time}"
+                        ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTextColumn
+                        Header="Місць"
+                        Width="0.5*"
+                        Binding="{Binding MaxPlaces}"
+                        ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTemplateColumn
+                        Header="Дії"
+                        Width="1*">
+
+                            <DataGridTemplateColumn.CellTemplate>
+
+                                <DataTemplate>
+
+                                    <StackPanel
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                        <Button
+                                        Content="✎Ред."
+                                        Tag="{Binding}"
+                                        Style="{StaticResource TableButtonStyle}"
+                                        Click="Edit_Click"/>
+
+                                        <Button
+                                        Content="🗑️Вид."
+                                        Tag="{Binding}"
+                                        Style="{StaticResource TableButtonStyle}"
+                                        Click="Delete_Click"/>
+
+                                    </StackPanel>
+
+                                </DataTemplate>
+
+                            </DataGridTemplateColumn.CellTemplate>
+
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Border>
+
+        </Grid>
 
     </Grid>
 

@@ -28,15 +28,23 @@
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="Ім'я"
+                                        Width="1*"
+                                        ElementStyle="{StaticResource CenterTextBlockStyle}"
                                     Binding="{Binding FullName}"/>
 
                     <DataGridTextColumn Header="Логін"
+                                        Width="1*"
+                                        ElementStyle="{StaticResource CenterTextBlockStyle}"
                                     Binding="{Binding Login}"/>
 
                     <DataGridTextColumn Header="Роль"
+                                        Width="1*"
+                                        ElementStyle="{StaticResource CenterTextBlockStyle}"
                                     Binding="{Binding Role}"/>
 
                     <DataGridTextColumn Header="Телефон"
+                                        Width="1*"
+                                        ElementStyle="{StaticResource CenterTextBlockStyle}"
                                     Binding="{Binding Phone}"/>
 
                 </DataGrid.Columns>
