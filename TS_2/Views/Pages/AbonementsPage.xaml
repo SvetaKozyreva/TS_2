@@ -1,14 +1,25 @@
 ﻿<Page x:Class="TS_2.Views.Pages.AbonementsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TS_2.Views.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AbonementsPage">
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  Background="#FFF8F8">
+
+        <StackPanel Margin="30">
+
+            <TextBlock
+                Text="💳 Абонементи"
+                FontSize="30"
+                FontWeight="Bold"
+                Foreground="#6D5555"
+                Margin="0,0,0,30"/>
+
+            <WrapPanel
+                x:Name="CardsPanel"
+                HorizontalAlignment="Center"/>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
 </Page>

@@ -62,9 +62,10 @@ namespace TS_2.Views.Pages
 
                 MessageBox.Show($"Ласкаво просимо, {user.FullName}!");
 
-                ((MainWindow)Application.Current.MainWindow).UpdateUser();
+                MainWindow main = (MainWindow)Application.Current.MainWindow;
 
-                NavigationService.GoBack();
+                main.UpdateUser();
+                main.Navigate(new HomePage(), "Головна");
             }
         }
         

@@ -19,5 +19,6 @@ namespace TS_2.Models
         public int Visits { get; set; }
 
         public int DurationDays { get; set; }
+        public string? Description { get; set; }
     }
 }

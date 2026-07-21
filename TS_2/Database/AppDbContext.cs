@@ -17,7 +17,7 @@ namespace TS_2.Database
 
         public DbSet<TrainingRegistration> TrainingRegistrations { get; set; }
 
-        public DbSet<Abonement> Abonements { get; set; }
+        public DbSet<Abonement> Abonement { get; set; }
 
         public DbSet<UserAbonement> UserAbonements { get; set; }
 

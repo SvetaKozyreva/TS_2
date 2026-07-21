@@ -2,11 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="PinkComboBoxStyle"
-           TargetType="ComboBox">
+    <Style x:Key="PinkComboBoxStyle" TargetType="ComboBox">
 
-        <Setter Property="Height" Value="32"/>
-        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="42"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="#6D5555"/>
         <Setter Property="Background" Value="White"/>
@@ -15,49 +13,132 @@
         <Setter Property="Padding" Value="12,0"/>
 
         <Setter Property="Template">
-
             <Setter.Value>
 
                 <ControlTemplate TargetType="ComboBox">
 
-                    <Border
-                        CornerRadius="12"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Grid>
 
+                        <Border x:Name="Border"
+                            CornerRadius="14"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <Grid>
+                            <Grid>
 
-                            <Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="45"/>
+                                </Grid.ColumnDefinitions>
 
-                                <ColumnDefinition/>
+                                <ContentPresenter
+                                    Margin="12,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding SelectionBoxItem}"
+                                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
 
-                                <ColumnDefinition Width="40"/>
-
-                            </Grid.ColumnDefinitions>
-
-                            <ContentPresenter
-                                Margin="12,0,0,0"
-                                VerticalAlignment="Center"/>
-
-                            <TextBlock
+                                <ToggleButton
+                                FocusVisualStyle="{x:Null}"
                                 Grid.Column="1"
-                                FontSize="18"
-                                Foreground="#C86D6D"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Text="▼"/>
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Focusable="False"
+                                IsChecked="{Binding IsDropDownOpen,
+                                    RelativeSource={RelativeSource TemplatedParent},
+                                    Mode=TwoWay}">
 
-                        </Grid>
+                                    <TextBlock
+                                    Text="▼"
+                                    FontSize="16"
+                                    Foreground="#C86D6D"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
 
-                    </Border>
+                                </ToggleButton>
+
+                            </Grid>
+
+                        </Border>
+
+                        <Popup
+                        Name="Popup"
+                        Placement="Bottom"
+                        AllowsTransparency="True"
+                        Focusable="False"
+                        IsOpen="{TemplateBinding IsDropDownOpen}"
+                        PopupAnimation="Slide">
+
+                            <Border
+                            Margin="0,4,0,0"
+                            CornerRadius="12"
+                            Background="White"
+                            BorderBrush="#F5CACA"
+                            BorderThickness="1.5">
+
+                                <ScrollViewer>
+
+                                    <StackPanel
+                                    IsItemsHost="True"
+                                    KeyboardNavigation.DirectionalNavigation="Contained"/>
+
+                                </ScrollViewer>
+
+                            </Border>
+
+                        </Popup>
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border"
+                                Property="BorderBrush"
+                                Value="#E6A9A9"/>
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="Border"
+                                Property="BorderBrush"
+                                Value="#C86D6D"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity"
+                                Value="0.6"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
 
                 </ControlTemplate>
 
             </Setter.Value>
-
         </Setter>
+
+    </Style>
+
+    <!-- Элементы списка -->
+
+    <Style TargetType="ComboBoxItem">
+
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="#6D5555"/>
+        <Setter Property="Background" Value="White"/>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Background" Value="#FFF3F3"/>
+            </Trigger>
+
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FCE5E5"/>
+                <Setter Property="Foreground" Value="#6D5555"/>
+            </Trigger>
+
+        </Style.Triggers>
 
     </Style>
 

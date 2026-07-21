@@ -1,14 +1,121 @@
 ﻿<Page x:Class="TS_2.Views.Pages.AdminAbonementsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TS_2.Views.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminAbonementsPage">
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Grid>
-        
+    <Grid Background="#FFF8F8">
+
+        <Grid Margin="30">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Верх -->
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Text="💳 Керування абонементами"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="#6D5555"
+                    VerticalAlignment="Center"/>
+
+                <Button
+                    Width="200"
+                    Height="45"
+                    Grid.Column="1"
+                    Content="+ Додати абонемент"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="AddAbonement_Click"/>
+
+            </Grid>
+
+            <!-- Таблица -->
+
+            <Border
+                Grid.Row="2"
+                Style="{StaticResource CardStyle}">
+
+                <DataGrid
+                    x:Name="AbonementsGrid"
+                    AutoGenerateColumns="False">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn
+                            Header="Назва"
+                            Width="*"
+                            Binding="{Binding Name}"
+                             ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTextColumn
+                            Header="Ціна"
+                            Width="0.5*"
+                            Binding="{Binding Price}"
+                             ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTextColumn
+                            Header="Тривалість"
+                            Width="0.5*"
+                            Binding="{Binding DurationDays}"
+                             ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTextColumn
+                            Header="Занять"
+                            Width="0.5*"
+                            Binding="{Binding Visits}"
+                             ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+
+                        <DataGridTemplateColumn
+                            Header="Дії"
+                            Width="*">
+
+                            <DataGridTemplateColumn.CellTemplate>
+
+                                <DataTemplate>
+
+                                    <StackPanel
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+
+                                        <Button
+                                            Content="✏ Ред."
+                                            Margin="0,0,10,0"
+                                            Tag="{Binding}"
+                                            Style="{StaticResource TableButtonStyle}"
+                                            Click="Edit_Click"/>
+
+                                        <Button
+                                            Content="🗑 Вид."
+                                            Margin="10,0,0,0"
+                                            Tag="{Binding}"
+                                            Style="{StaticResource TableButtonStyle}"
+                                            Click="Delete_Click"/>
+
+                                    </StackPanel>
+
+                                </DataTemplate>
+
+                            </DataGridTemplateColumn.CellTemplate>
+
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Border>
+
+        </Grid>
+
     </Grid>
+
 </Page>

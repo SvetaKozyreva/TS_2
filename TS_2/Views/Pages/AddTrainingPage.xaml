@@ -25,7 +25,8 @@
 
                     <TextBlock
                         Text="📝 Назва тренування"
-                        Style="{StaticResource CardTextStyle}"/>
+                        Style="{StaticResource CardTextStyle}"
+                        Margin="0,10,0,6"/>
 
                     <TextBox
                         x:Name="NameBox"/>
@@ -34,7 +35,8 @@
 
                     <TextBlock
                         Text="📅 Дата"
-                        Style="{StaticResource CardTextStyle}"/>
+                        Style="{StaticResource CardTextStyle}"
+                        Margin="0,10,0,0"/>
 
                     <DatePicker
                         x:Name="DatePicker"/>
@@ -43,7 +45,8 @@
 
                     <TextBlock
                         Text="🕒 Час"
-                        Style="{StaticResource CardTextStyle}"/>
+                        Style="{StaticResource CardTextStyle}"
+                        Margin="0,0,0,6"/>
 
                     <TextBox
                         x:Name="TimeBox"/>
@@ -52,7 +55,8 @@
 
                     <TextBlock
                         Text="👥 Максимальна кількість місць"
-                        Style="{StaticResource CardTextStyle}"/>
+                        Style="{StaticResource CardTextStyle}"
+                        Margin="0,10,0,6"/>
 
                     <TextBox
                         x:Name="PlacesBox"/>
@@ -61,7 +65,8 @@
 
                     <TextBlock
                         Text="📖 Опис тренування"
-                        Style="{StaticResource CardTextStyle}"/>
+                        Style="{StaticResource CardTextStyle}"
+                        Margin="0,10,0,6"/>
 
                     <TextBox
                         x:Name="DescriptionBox"
@@ -74,7 +79,8 @@
 
                     <TextBlock
                         Text="💪 Тренер"
-                        Style="{StaticResource CardTextStyle}"/>
+                        Style="{StaticResource CardTextStyle}"
+                        Margin="0,10,0,6"/>
 
                     <ComboBox
                         x:Name="TrainerBox"

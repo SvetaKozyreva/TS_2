@@ -5,6 +5,7 @@
     <!-- DataGrid -->
 
     <Style TargetType="DataGrid">
+        <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
