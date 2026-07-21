@@ -340,16 +340,31 @@ namespace TS_2.Views.Pages
                 (Style)FindResource("CardTextStyle")
             });
 
-
-
-            info.Children.Add(new TextBlock
+            using (AppDbContext db = new AppDbContext())
             {
-                Text =
-                "👥 Місця: " +
-                training.MaxPlaces,
-                Style =
-                (Style)FindResource("CardTextStyle")
-            });
+                var trainer = db.Users.FirstOrDefault(x => x.UserID == training.TrainerID);
+
+                info.Children.Add(new TextBlock
+                {
+                    Text = "👤 Тренер: " + trainer?.FullName,
+                    Style = (Style)FindResource("CardTextStyle")
+                });
+            }
+
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                int busyPlaces = db.TrainingRegistrations
+                    .Count(x => x.TrainingID == training.TrainingID);
+
+                int freePlaces = training.MaxPlaces - busyPlaces;
+
+                info.Children.Add(new TextBlock
+                {
+                    Text = $"👥 Вільно місць: {freePlaces}/{training.MaxPlaces}",
+                    Style = (Style)FindResource("CardTextStyle")
+                });
+            }
 
 
 
@@ -411,6 +426,25 @@ namespace TS_2.Views.Pages
 
             using (AppDbContext db = new AppDbContext())
             {
+                bool alreadyRegistered =
+                    db.TrainingRegistrations.Any(x =>
+                        x.UserID == Session.CurrentUser.UserID &&
+                        x.TrainingID == training.TrainingID);
+
+                if (alreadyRegistered)
+                {
+                    MessageBox.Show("Ви вже записані на це тренування.");
+                    return;
+                }
+                int busyPlaces =
+                    db.TrainingRegistrations.Count(x =>
+                        x.TrainingID == training.TrainingID);
+
+                if (busyPlaces >= training.MaxPlaces)
+                {
+                    MessageBox.Show("На це тренування вже немає вільних місць.");
+                    return;
+                }
 
                 TrainingRegistration reg =
                 new TrainingRegistration
@@ -435,8 +469,12 @@ namespace TS_2.Views.Pages
             }
 
 
-            MessageBox.Show(
-            "Ви успішно записалися!");
+            MessageBox.Show("Ви успішно записалися!");
+
+            // Обновляем список тренировок
+            LoadTrainings();
+
+            CreateDays();
         }
         private void PreviousWeek_Click(object sender, RoutedEventArgs e)
         {

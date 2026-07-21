@@ -21,7 +21,7 @@ namespace TS_2.Database
 
         public DbSet<UserAbonement> UserAbonements { get; set; }
 
-        public DbSet<Event> Events { get; set; }
+        public DbSet<Event> Event { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

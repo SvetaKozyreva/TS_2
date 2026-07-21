@@ -39,22 +39,26 @@
                     <StackPanel VerticalAlignment="Center">
 
                         <TextBlock
+                            x:Name="WelcomeTitle"
                 Text="Ласкаво просимо до TS Studio!"
                 Style="{StaticResource CardTitleStyle}"
                 FontSize="28"/>
 
                         <TextBlock
+                            x:Name="WelcomeText"
                 Margin="0,10,0,0"
                 Text="Почніть шлях до здорового тіла вже сьогодні."
                 Style="{StaticResource CardTextStyle}"/>
 
                         <Button
-                Width="140"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Left"
-                Content="Детальніше"
-                Style="{StaticResource PrimaryButtonStyle}" />
+                            x:Name="WelcomeButton"
+                            Width="180"
+                            Height="40"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Left"
+                            Content="Увійти"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Click="WelcomeButton_Click"/>
 
                     </StackPanel>
                     
@@ -73,29 +77,28 @@
 
                 <!-- Левая карточка -->
                 <Border Grid.Column="0"
-            Style="{StaticResource CardStyle}" Margin="10,10,10,10">
+        Style="{StaticResource CardStyle}"
+        Margin="10">
 
                     <StackPanel>
 
-                        <TextBlock Text="Найближчі тренування"
-                       Style="{StaticResource CardTitleStyle}"/>
+                        <TextBlock
+            Text="Найближчі тренування"
+            Style="{StaticResource CardTitleStyle}"/>
 
-                        <TextBlock Margin="0,15,0,5"
-                       Text="• Pilates — 18:00"
-                       Style="{StaticResource CardTextStyle}"/>
+                        <StackPanel
+            x:Name="NearestTrainingsPanel"
+            Margin="0,15,0,0"/>
 
-                        <TextBlock Text="• Stretching — 19:30"
-                       Style="{StaticResource CardTextStyle}"/>
-
-                        <TextBlock Text="• Reformer — 11:00"
-                       Style="{StaticResource CardTextStyle}"/>
-
-                        <Button Margin="0,20,0,0"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                    Width="150"
-                    Height="38"
-                    HorizontalAlignment="Left"
-                    Content="Переглянути"/>
+                        <Button
+            x:Name="OpenScheduleButton"
+            Margin="0,20,0,0"
+            Width="170"
+            Height="40"
+            HorizontalAlignment="Left"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Content="Переглянути всі"
+            Click="OpenScheduleButton_Click"/>
 
                     </StackPanel>
 
@@ -108,24 +111,19 @@
                     <StackPanel>
 
                         <TextBlock Text="Події"
-                       Style="{StaticResource CardTitleStyle}"/>
+               Style="{StaticResource CardTitleStyle}"/>
 
-                        <TextBlock Margin="0,15,0,5"
-                       Text="• Yoga Weekend"
-                       Style="{StaticResource CardTextStyle}"/>
+                        <StackPanel x:Name="NearestEventsPanel"
+                Margin="0,15,0,0"/>
 
-                        <TextBlock Text="• Майстер-клас"
-                       Style="{StaticResource CardTextStyle}"/>
-
-                        <TextBlock Text="• Stretch Challenge"
-                       Style="{StaticResource CardTextStyle}"/>
-
-                        <Button Margin="0,20,0,0"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                    Width="150"
-                    Height="38"
-                    HorizontalAlignment="Left"
-                    Content="Усі події"/>
+                        <Button x:Name="OpenEventsButton"
+            Margin="0,20,0,0"
+            Width="150"
+            Height="38"
+            HorizontalAlignment="Left"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Content="Усі події"
+            Click="OpenEventsButton_Click"/>
 
                     </StackPanel>
 

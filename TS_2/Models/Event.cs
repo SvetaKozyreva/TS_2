@@ -10,7 +10,7 @@ namespace TS_2.Models
     public class Event
     {
         [Key]
-        public int EventID { get; set; }
+        public int EventsID { get; set; }
 
         public string Title { get; set; }
 
