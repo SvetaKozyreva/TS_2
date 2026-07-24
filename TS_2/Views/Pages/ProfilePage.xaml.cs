@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TS_2.Database;
 using TS_2.Helpers;
 using TS_2.Views;
 using TS_2.Views.Pages;
@@ -34,6 +35,86 @@ namespace TS_2.Views.Pages
                 LoginText.Text = "Логін: " + Session.CurrentUser.Login;
                 PhoneText.Text = "Телефон: " + Session.CurrentUser.Phone;
                 RoleText.Text = "Роль: " + Session.CurrentUser.Role;
+                LoadAbonement();
+                LoadNearestTraining();
+            }
+        }
+        private void LoadAbonement()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var userAbonement = db.UserAbonement
+                    .FirstOrDefault(x => x.UserID == Session.CurrentUser.UserID);
+
+                if (userAbonement == null)
+                {
+                    AbonementText.Text =
+                        "Активний абонемент відсутній.";
+
+                    return;
+                }
+
+                var abonement = db.Abonement
+                    .FirstOrDefault(x =>
+                        x.AbonementID == userAbonement.AbonementID);
+
+                if (abonement == null)
+                {
+                    AbonementText.Text =
+                        "Активний абонемент відсутній.";
+
+                    return;
+                }
+
+                AbonementText.Text =
+                    abonement.Name +
+                    "\n\n💰 " + abonement.Price + " грн" +
+                    "\n📅 До: " + userAbonement.EndDate +
+                    "\n🏋 Залишилось занять: "
+                    + userAbonement.RemainingVisits +
+                    " / " + abonement.Visits;
+            }
+        }
+        private void LoadNearestTraining()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var registration = db.TrainingRegistrations
+                    .Where(x =>
+                        x.UserID == Session.CurrentUser.UserID &&
+                        x.Status == "Активна")
+                    .ToList()
+                    .OrderBy(x => DateTime.Parse(x.RegistrationDate))
+                    .FirstOrDefault();
+
+                if (registration == null)
+                {
+                    TrainingText.Text = "Немає записів";
+                    return;
+                }
+
+                var training = db.Trainings
+                    .FirstOrDefault(x =>
+                        x.TrainingID == registration.TrainingID);
+
+                if (training == null)
+                {
+                    TrainingText.Text = "Немає записів";
+                    return;
+                }
+
+                var trainer = db.Users
+                    .FirstOrDefault(x =>
+                        x.UserID == training.TrainerID);
+
+                TrainingText.Text =
+                    training.Name +
+                    "\n" +
+                    training.Date +
+                    " " +
+                    training.Time +
+                    "\nТренер: " +
+                    trainer.FullName;
             }
         }
         private void Logout_Click(object sender, RoutedEventArgs e)

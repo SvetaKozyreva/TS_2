@@ -173,13 +173,54 @@ namespace TS_2.Views.Pages
                 return;
             }
 
-            Abonement abonement = (Abonement)((Button)sender).Tag;
+            Abonement abonement =
+                (Abonement)((Button)sender).Tag;
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                UserAbonement oldAbonement =
+                    db.UserAbonement.FirstOrDefault(x =>
+                        x.UserID == Session.CurrentUser.UserID);
+
+                if (oldAbonement != null)
+                {
+                    MessageBox.Show(
+                        "У вас вже є активний абонемент.",
+                        "Увага",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+
+                    return;
+                }
+
+                UserAbonement newAbonement =
+                    new UserAbonement();
+
+                newAbonement.UserID = Session.CurrentUser.UserID;
+                newAbonement.AbonementID = abonement.AbonementID;
+
+                newAbonement.StartDate =
+                    DateTime.Today.ToString("dd.MM.yyyy");
+
+                newAbonement.EndDate =
+                    DateTime.Today
+                    .AddDays(abonement.DurationDays)
+                    .ToString("dd.MM.yyyy");
+
+                newAbonement.RemainingVisits =
+                    abonement.Visits;
+
+                db.UserAbonement.Add(newAbonement);
+
+                db.SaveChanges();
+            }
 
             MessageBox.Show(
-                $"Функція придбання абонемента \"{abonement.Name}\" буде доступна пізніше.",
-                "Придбати абонемент",
+                $"Вітаємо!\n\nАбонемент \"{abonement.Name}\" успішно придбано.",
+                "Успіх",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
+            LoadCards();
         }
     }
 }

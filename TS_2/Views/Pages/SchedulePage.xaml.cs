@@ -436,6 +436,18 @@ namespace TS_2.Views.Pages
                     MessageBox.Show("Ви вже записані на це тренування.");
                     return;
                 }
+                // Проверяем, есть ли активный абонемент
+                UserAbonement userAbonement = db.UserAbonement
+                    .FirstOrDefault(x =>
+                        x.UserID == Session.CurrentUser.UserID &&
+                        x.RemainingVisits > 0);
+
+                if (userAbonement == null)
+                {
+                    MessageBox.Show(
+                        "У вас немає активного абонемента.\nПридбайте новий абонемент.");
+                    return;
+                }
                 int busyPlaces =
                     db.TrainingRegistrations.Count(x =>
                         x.TrainingID == training.TrainingID);
@@ -463,6 +475,14 @@ namespace TS_2.Views.Pages
 
 
                 db.TrainingRegistrations.Add(reg);
+                // Списываем одно занятие
+                userAbonement.RemainingVisits--;
+
+                if (userAbonement.RemainingVisits == 0)
+                {
+                    MessageBox.Show(
+                        "Це було останнє заняття за вашим абонементом.\nПридбайте новий абонемент.");
+                }
 
                 db.SaveChanges();
 

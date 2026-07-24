@@ -19,7 +19,7 @@ namespace TS_2.Database
 
         public DbSet<Abonement> Abonement { get; set; }
 
-        public DbSet<UserAbonement> UserAbonements { get; set; }
+        public DbSet<UserAbonement> UserAbonement { get; set; }
 
         public DbSet<Event> Event { get; set; }
 
