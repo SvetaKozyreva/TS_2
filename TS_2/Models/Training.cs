@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,5 +25,7 @@ namespace TS_2.Models
         public string Description { get; set; }
 
         public int TrainerID { get; set; }
+        [NotMapped]
+        public string PlacesInfo { get; set; }
     }
 }

@@ -46,15 +46,11 @@
                 Padding="20">
 
                 <DataGrid
-                x:Name="TrainingsGrid"
-                AutoGenerateColumns="False"
-                HeadersVisibility="Column"
-                GridLinesVisibility="None"
-                BorderThickness="0"
-                RowBackground="White"
-                AlternatingRowBackground="#FFF8F8"
-                CanUserAddRows="False"
-                IsReadOnly="True">
+    x:Name="TrainingsGrid"
+    AutoGenerateColumns="False"
+    CanUserAddRows="False"
+    IsReadOnly="True"
+    MouseDoubleClick="TrainingsGrid_MouseDoubleClick">
 
                     <DataGrid.Columns>
 
@@ -77,10 +73,10 @@
                         ElementStyle="{StaticResource CenterTextBlockStyle}"/>
 
                         <DataGridTextColumn
-                        Header="Місць"
-                        Width="0.5*"
-                        Binding="{Binding MaxPlaces}"
-                        ElementStyle="{StaticResource CenterTextBlockStyle}"/>
+    Header="Місця"
+    Width="0.7*"
+    Binding="{Binding PlacesInfo}"
+    ElementStyle="{StaticResource CenterTextBlockStyle}"/>
 
                         <DataGridTemplateColumn
                         Header="Дії"

@@ -35,5 +35,15 @@ namespace TS_2.Views.Pages
                 UsersGrid.ItemsSource = db.Users.ToList();
             }
         }
+        private void UsersGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (UsersGrid.SelectedItem == null)
+                return;
+
+            Models.User user = UsersGrid.SelectedItem as Models.User;
+
+            ((MainWindow)Application.Current.MainWindow)
+                .Navigate(new AdminUserDetailsPage(user), "Користувач");
+        }
     }
 }

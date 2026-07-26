@@ -20,10 +20,11 @@
             Margin="0,0,0,20"/>
 
             <DataGrid x:Name="UsersGrid"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  IsReadOnly="True"
-                  Height="550">
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          IsReadOnly="True"
+          Height="550"
+          MouseDoubleClick="UsersGrid_MouseDoubleClick">
 
                 <DataGrid.Columns>
 

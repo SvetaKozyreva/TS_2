@@ -129,7 +129,54 @@ namespace TS_2.Views.Pages
         }
         private void EditProfile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Функція буде додана пізніше 😊");
+            InfoPanel.Visibility = Visibility.Collapsed;
+            EditPanel.Visibility = Visibility.Visible;
+
+            FullNameBox.Text = Session.CurrentUser.FullName;
+            PhoneBox.Text = Session.CurrentUser.Phone;
+
+        }
+        private void CancelEdit_Click(object sender, RoutedEventArgs e)
+        {
+            InfoPanel.Visibility = Visibility.Visible;
+            EditPanel.Visibility = Visibility.Collapsed;
+
+            PasswordBox.Password = "";
+        }
+        private void SaveProfile_Click(object sender, RoutedEventArgs e)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var user = db.Users
+                    .FirstOrDefault(x => x.UserID == Session.CurrentUser.UserID);
+
+                if (user == null)
+                    return;
+
+                user.FullName = FullNameBox.Text;
+                user.Phone = PhoneBox.Text;
+
+                if (!string.IsNullOrWhiteSpace(PasswordBox.Password))
+                {
+                    user.Password = PasswordBox.Password;
+                }
+
+                db.SaveChanges();
+
+                Session.CurrentUser = user;
+            }
+
+            FullNameText.Text = Session.CurrentUser.FullName;
+            LoginText.Text = "Логін: " + Session.CurrentUser.Login;
+            PhoneText.Text = "Телефон: " + Session.CurrentUser.Phone;
+            RoleText.Text = "Роль: " + Session.CurrentUser.Role;
+
+            InfoPanel.Visibility = Visibility.Visible;
+            EditPanel.Visibility = Visibility.Collapsed;
+
+            PasswordBox.Password = "";
+
+            MessageBox.Show("Профіль успішно оновлено!");
         }
         private void MyTrainings_Click(object sender, RoutedEventArgs e)
         {

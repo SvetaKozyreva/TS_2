@@ -53,25 +53,69 @@
 
                         <!-- Дані -->
 
-                        <StackPanel Grid.Column="1"
-                                Margin="25">
+                        <StackPanel Grid.Column="1" Margin="25">
 
-                            <TextBlock x:Name="FullNameText"
-                                   FontSize="24"
-                                   FontWeight="Bold"
-                                   Foreground="#6D5555"/>
+                            <!-- Просмотр -->
+                            <StackPanel x:Name="InfoPanel">
 
-                            <TextBlock x:Name="LoginText"
-                                   Margin="0,15,0,0"
-                                   FontSize="16"/>
+                                <TextBlock x:Name="FullNameText"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#6D5555"/>
 
-                            <TextBlock x:Name="PhoneText"
-                                   Margin="0,8,0,0"
-                                   FontSize="16"/>
+                                <TextBlock x:Name="LoginText"
+                   Margin="0,15,0,0"
+                   FontSize="16"/>
 
-                            <TextBlock x:Name="RoleText"
-                                   Margin="0,8,0,0"
-                                   FontSize="16"/>
+                                <TextBlock x:Name="PhoneText"
+                   Margin="0,8,0,0"
+                   FontSize="16"/>
+
+                                <TextBlock x:Name="RoleText"
+                   Margin="0,8,0,0"
+                   FontSize="16"/>
+
+                            </StackPanel>
+
+                            <!-- Редагування -->
+                            <StackPanel x:Name="EditPanel"
+                Visibility="Collapsed">
+
+                                <TextBlock Text="ПІБ"/>
+
+                                <TextBox x:Name="FullNameBox"
+                 Margin="0,5,0,10"/>
+
+                                <TextBlock Text="Телефон"/>
+
+                                <TextBox x:Name="PhoneBox"
+                 Margin="0,5,0,10"/>
+
+                                <TextBlock Text="Новий пароль"/>
+
+                                <PasswordBox x:Name="PasswordBox"
+                     Margin="0,5,0,15"/>
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Button
+                Width="120"
+                Height="40"
+                Margin="0,0,10,0"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Content="Зберегти"
+                Click="SaveProfile_Click"/>
+
+                                    <Button
+                Width="120"
+                Height="40"
+                Style="{StaticResource MenuButtonStyle}"
+                Content="Скасувати"
+                Click="CancelEdit_Click"/>
+
+                                </StackPanel>
+
+                            </StackPanel>
 
                         </StackPanel>
 

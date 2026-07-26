@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using TS_2.Database;
 using TS_2.Models;
 
@@ -22,7 +23,19 @@ namespace TS_2.Views.Pages
         {
             using (AppDbContext db = new AppDbContext())
             {
-                TrainingsGrid.ItemsSource = db.Trainings.ToList();
+                    var trainings = db.Trainings.ToList();
+
+                    foreach (var training in trainings)
+                    {
+                        int busyPlaces = db.TrainingRegistrations
+                            .Count(x => x.TrainingID == training.TrainingID);
+
+                        int freePlaces = training.MaxPlaces - busyPlaces;
+
+                        training.PlacesInfo = $"{freePlaces}/{training.MaxPlaces}";
+                    }
+
+                    TrainingsGrid.ItemsSource = trainings;
             }
         }
 
@@ -77,8 +90,15 @@ namespace TS_2.Views.Pages
 
             LoadTrainings();
         }
+        private void TrainingsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (TrainingsGrid.SelectedItem == null)
+                return;
 
+            Training training = (Training)TrainingsGrid.SelectedItem;
 
+            NavigationService.Navigate(new AdminTrainingDetailsPage(training));
+        }
 
     }
 }
