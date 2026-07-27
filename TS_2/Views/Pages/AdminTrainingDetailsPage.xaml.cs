@@ -86,5 +86,60 @@ namespace TS_2.Views.Pages
             ((MainWindow)Application.Current.MainWindow)
                 .Navigate(new AdminUserDetailsPage(user), "Користувач");
         }
+        private void RegisterClient_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow)
+                .Navigate(
+                    new AdminUsersPage(currentTraining),
+                    "Вибір клієнта");
+        }
+        private void CancelRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            User user = (User)((Button)sender).Tag;
+
+            MessageBoxResult result = MessageBox.Show(
+                $"Скасувати запис для {user.FullName}?",
+                "Підтвердження",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                var registration = db.TrainingRegistrations
+                    .FirstOrDefault(x =>
+                        x.UserID == user.UserID &&
+                        x.TrainingID == currentTraining.TrainingID);
+
+                if (registration != null)
+                {
+                    db.TrainingRegistrations.Remove(registration);
+                }
+
+                // Возвращаем занятие по абонементу
+                var userAb = db.UserAbonement
+                    .FirstOrDefault(x => x.UserID == user.UserID);
+
+                if (userAb != null)
+                {
+                    var abonement = db.Abonement
+                        .FirstOrDefault(x => x.AbonementID == userAb.AbonementID);
+
+                    if (abonement != null &&
+                        userAb.RemainingVisits < abonement.Visits)
+                    {
+                        userAb.RemainingVisits++;
+                    }
+                }
+
+                db.SaveChanges();
+            }
+
+            MessageBox.Show("Запис скасовано.");
+
+            LoadData();
+        }
     }
 }

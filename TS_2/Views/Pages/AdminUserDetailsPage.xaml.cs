@@ -104,7 +104,91 @@ namespace TS_2.Views.Pages
         }
         private void GiveAbonementButton_Click(object sender, RoutedEventArgs e)
         {
-            // Здесь позже будет окно выбора абонемента
+            NavigationService.Navigate(
+                new GiveAbonementPage(currentUser));
+        }
+        private void EditAbonement_Click(object sender, RoutedEventArgs e)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var userAb = db.UserAbonement
+                    .FirstOrDefault(x => x.UserID == currentUser.UserID);
+
+                if (userAb == null)
+                {
+                    MessageBox.Show("У користувача немає абонемента.");
+                    return;
+                }
+
+                RemainingVisitsBox.Text =
+                    userAb.RemainingVisits.ToString();
+
+                EndDatePicker.SelectedDate =
+                    DateTime.Parse(userAb.EndDate);
+
+                EditAbonementPanel.Visibility =
+                    Visibility.Visible;
+            }
+        }
+        private void SaveAbonement_Click(object sender, RoutedEventArgs e)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var userAb = db.UserAbonement
+                    .FirstOrDefault(x => x.UserID == currentUser.UserID);
+
+                if (userAb == null)
+                    return;
+
+                userAb.RemainingVisits =
+                    int.Parse(RemainingVisitsBox.Text);
+
+                userAb.EndDate =
+                    EndDatePicker.SelectedDate.Value.ToString("dd.MM.yyyy");
+
+                db.SaveChanges();
+            }
+
+            EditAbonementPanel.Visibility =
+                Visibility.Collapsed;
+
+            LoadData();
+
+            MessageBox.Show("Абонемент оновлено.");
+        }
+        private void CancelAbonement_Click(object sender, RoutedEventArgs e)
+        {
+            EditAbonementPanel.Visibility =
+                Visibility.Collapsed;
+        }
+        private void DeleteAbonement_Click(object sender, RoutedEventArgs e)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var userAb = db.UserAbonement
+                    .FirstOrDefault(x => x.UserID == currentUser.UserID);
+
+                if (userAb == null)
+                {
+                    MessageBox.Show("У користувача немає активного абонемента.");
+                    return;
+                }
+
+                if (MessageBox.Show(
+                    "Забрати абонемент?",
+                    "Підтвердження",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
+                {
+                    db.UserAbonement.Remove(userAb);
+                    db.SaveChanges();
+
+                    MessageBox.Show("Абонемент успішно видалено.");
+
+                    LoadData();
+                }
+            }
         }
         private void Training_Click(object sender, RoutedEventArgs e)
         {

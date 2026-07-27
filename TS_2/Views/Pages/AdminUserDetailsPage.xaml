@@ -45,6 +45,46 @@
                     <TextBlock x:Name="EndDateText"
                            Style="{StaticResource CardTextStyle}"
                            Margin="0,5"/>
+                    <StackPanel x:Name="EditAbonementPanel"
+            Visibility="Collapsed"
+            Margin="0,15,0,0">
+
+                        <TextBlock
+        Text="Залишилось занять"
+        Style="{StaticResource CardTextStyle}"/>
+
+                        <TextBox
+        x:Name="RemainingVisitsBox"
+        Margin="0,5,0,15"/>
+
+                        <TextBlock
+        Text="Дата завершення"
+        Style="{StaticResource CardTextStyle}"/>
+
+                        <DatePicker
+        x:Name="EndDatePicker"
+        Margin="0,5,0,15"/>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <Button
+            Width="130"
+            Height="38"
+            Margin="0,0,10,0"
+            Content="Зберегти"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Click="SaveAbonement_Click"/>
+
+                            <Button
+            Width="130"
+            Height="38"
+            Content="Скасувати"
+            Style="{StaticResource MenuButtonStyle}"
+            Click="CancelAbonement_Click"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
 
                     <Button x:Name="GiveAbonementButton"
                         Margin="0,20,0,0"
@@ -54,6 +94,26 @@
                         Style="{StaticResource PrimaryButtonStyle}"
                         Content="Видати абонемент"
                         Click="GiveAbonementButton_Click"/>
+                    <StackPanel
+    Orientation="Horizontal"
+    Margin="0,15,0,0">
+
+                        <Button
+        Width="150"
+        Height="38"
+        Margin="0,0,10,0"
+        Style="{StaticResource MenuButtonStyle}"
+        Content="Редагувати"
+        Click="EditAbonement_Click"/>
+
+                        <Button
+        Width="150"
+        Height="38"
+        Style="{StaticResource MenuButtonStyle}"
+        Content="Забрати"
+        Click="DeleteAbonement_Click"/>
+
+                    </StackPanel>
 
                 </StackPanel>
 

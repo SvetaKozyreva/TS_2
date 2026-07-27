@@ -25,6 +25,7 @@
           IsReadOnly="True"
           Height="550"
           MouseDoubleClick="UsersGrid_MouseDoubleClick">
+                
 
                 <DataGrid.Columns>
 
@@ -47,6 +48,26 @@
                                         Width="1*"
                                         ElementStyle="{StaticResource CenterTextBlockStyle}"
                                     Binding="{Binding Phone}"/>
+                    <DataGridTemplateColumn
+    x:Name="RegisterColumn"
+    Header="Дія"
+    Visibility="Collapsed">
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <Button
+                Content="Записати"
+                Tag="{Binding}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Click="Register_Click"/>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
 

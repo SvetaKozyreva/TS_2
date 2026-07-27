@@ -58,8 +58,23 @@
                         Style="{StaticResource CardTextStyle}"/>
 
                 </StackPanel>
+                
 
             </Border>
+            <StackPanel
+    Orientation="Horizontal"
+    HorizontalAlignment="Left"
+    Margin="0,20,0,0">
+
+                <Button
+        Width="180"
+        Height="40"
+        Margin="0,0,15,0"
+        Content="➕ Записати клієнта"
+        Style="{StaticResource PrimaryButtonStyle}"
+        Click="RegisterClient_Click"/>
+
+            </StackPanel>
 
 
             <!-- Клиенты -->
@@ -75,39 +90,57 @@
                         Style="{StaticResource CardTitleStyle}"/>
 
                     <DataGrid
-                        x:Name="UsersGrid"
-                        Margin="0,15,0,0"
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        IsReadOnly="True"
-                        MouseLeftButtonUp="ParticipantsGrid_MouseLeftButtonUp">
+    x:Name="UsersGrid"
+    Margin="0,15,0,0"
+    AutoGenerateColumns="False"
+    CanUserAddRows="False"
+    IsReadOnly="True"
+    MouseDoubleClick="ParticipantsGrid_MouseLeftButtonUp">
 
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn
-                                Header="Ім'я"
-                                Width="2*"
-                                Binding="{Binding FullName}"/>
+                            <DataGridTextColumn Header="Ім'я"
+                            Width="2*"
+                            Binding="{Binding FullName}"/>
 
-                            <DataGridTextColumn
-                                Header="Телефон"
-                                Width="*"
-                                Binding="{Binding Phone}"/>
+                            <DataGridTextColumn Header="Телефон"
+                            Width="*"
+                            Binding="{Binding Phone}"/>
 
-                            <DataGridTextColumn
-                                Header="Логін"
-                                Width="*"
-                                Binding="{Binding Login}"/>
+                            <DataGridTextColumn Header="Логін"
+                            Width="*"
+                            Binding="{Binding Login}"/>
+
+                            <DataGridTemplateColumn Header="Дія" Width="*">
+
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+
+                                        <Button Content="❌ Скасувати"
+                            Tag="{Binding}"
+                            Style="{StaticResource TableButtonStyle}"
+                            Click="CancelRegistration_Click"/>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
 
                         </DataGrid.Columns>
 
                     </DataGrid>
 
+
                 </StackPanel>
+                
 
             </Border>
 
         </StackPanel>
+        
 
     </ScrollViewer>
+    
 </Page>
