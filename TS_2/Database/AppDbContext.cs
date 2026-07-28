@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TS_2.Models;
+using System.IO;
 
 namespace TS_2.Database
 {
@@ -25,7 +26,10 @@ namespace TS_2.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string path = System.IO.Path.GetFullPath("Database/TS.db");
+            string path = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Database",
+                "TS.db");
 
             optionsBuilder.UseSqlite($"Data Source={path}");
         }
