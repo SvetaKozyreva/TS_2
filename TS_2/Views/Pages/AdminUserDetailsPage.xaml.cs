@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -87,18 +88,99 @@ namespace TS_2.Views.Pages
                     if (training == null)
                         continue;
 
-                    Button btn = new Button
+                    Border card = new Border
                     {
-                        Content = $"{training.Date}   {training.Time}\n{training.Name}",
-                        Tag = training,
-                        Margin = new Thickness(0, 5, 0, 5),
-                        HorizontalContentAlignment = HorizontalAlignment.Left,
-                        Style = (Style)FindResource("MenuButtonStyle")
+                        Background = Brushes.White,
+                        CornerRadius = new CornerRadius(12),
+                        BorderBrush = new SolidColorBrush(Color.FromRgb(240, 220, 220)),
+                        BorderThickness = new Thickness(1),
+                        Padding = new Thickness(15),
+                        Margin = new Thickness(0, 0, 0, 10),
+                        Cursor = Cursors.Hand
                     };
 
-                    btn.Click += Training_Click;
+                    card.Effect = new DropShadowEffect
+                    {
+                        BlurRadius = 10,
+                        ShadowDepth = 2,
+                        Opacity = 0.18
+                    };
 
-                    TrainingPanel.Children.Add(btn);
+                    card.MouseEnter += (s, e) =>
+                    {
+                        card.Background =
+                            new SolidColorBrush(Color.FromRgb(255, 248, 248));
+                    };
+
+                    card.MouseLeave += (s, e) =>
+                    {
+                        card.Background = Brushes.White;
+                    };
+
+                    card.MouseLeftButtonDown += (s, e) =>
+                    {
+                        if (e.ClickCount == 2)
+                        {
+                            ((MainWindow)Application.Current.MainWindow)
+                                .Navigate(
+                                    new AdminTrainingDetailsPage(training),
+                                    "Тренування");
+
+                            e.Handled = true;
+                        }
+                    };
+
+                    Grid grid = new Grid();
+
+                    grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+                    grid.ColumnDefinitions.Add(new ColumnDefinition
+                    {
+                        Width = GridLength.Auto
+                    });
+
+                    StackPanel info = new StackPanel();
+
+                    info.Children.Add(new TextBlock
+                    {
+                        Text = training.Name,
+                        FontSize = 19,
+                        FontWeight = FontWeights.Bold,
+                        Foreground = new SolidColorBrush(Color.FromRgb(109, 85, 85))
+                    });
+
+                    info.Children.Add(new TextBlock
+                    {
+                        Text = "👤 " + db.Users
+                            .FirstOrDefault(x => x.UserID == training.TrainerID)?.FullName,
+                        Margin = new Thickness(0, 10, 0, 0),
+                        FontSize = 15
+                    });
+
+                    info.Children.Add(new TextBlock
+                    {
+                        Text = "📅 " + training.Date,
+                        Margin = new Thickness(0, 6, 0, 0),
+                        FontSize = 15
+                    });
+
+                    Grid.SetColumn(info, 0);
+                    grid.Children.Add(info);
+
+                    TextBlock time = new TextBlock
+                    {
+                        Text = "🕒 " + training.Time,
+                        FontWeight = FontWeights.Bold,
+                        FontSize = 16,
+                        VerticalAlignment = VerticalAlignment.Top
+                    };
+
+                    Grid.SetColumn(time, 1);
+                    grid.Children.Add(time);
+
+                    card.Child = grid;
+
+                    TrainingPanel.Children.Add(card);
                 }
             }
         }
@@ -192,6 +274,7 @@ namespace TS_2.Views.Pages
         }
         private void Training_Click(object sender, RoutedEventArgs e)
         {
+
             Button button = sender as Button;
 
             Training training = button.Tag as Training;

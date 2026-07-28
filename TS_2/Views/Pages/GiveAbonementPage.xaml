@@ -45,7 +45,8 @@
                 <ComboBox
                 x:Name="AbonementBox"
                 Height="40"
-                FontSize="15"/>
+                FontSize="15"
+                     Style="{StaticResource PinkComboBoxStyle}"/>
 
                 <TextBlock
                 Margin="0,25,0,5"

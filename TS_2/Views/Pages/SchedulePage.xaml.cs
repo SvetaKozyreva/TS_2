@@ -293,113 +293,140 @@ namespace TS_2.Views.Pages
 
         private void CreateTrainingCard(Training training)
         {
-
             Border card = new Border
             {
                 Style = (Style)FindResource("CardStyle"),
                 Margin = new Thickness(0, 0, 0, 15)
             };
 
-
-
             Grid grid = new Grid();
 
-
-
-            grid.ColumnDefinitions.Add(
-                new ColumnDefinition()
-            );
-
-
-            grid.ColumnDefinitions.Add(
-                new ColumnDefinition
-                {
-                    Width = new GridLength(170)
-                }
-            );
-
-
-
-            StackPanel info = new StackPanel();
-
-
-
-            info.Children.Add(new TextBlock
-            {
-                Text = training.Name,
-                Style =
-                (Style)FindResource("CardTitleStyle")
-            });
-
-
-
-            info.Children.Add(new TextBlock
-            {
-                Text = "🕒 " + training.Time,
-                Style =
-                (Style)FindResource("CardTextStyle")
-            });
+            // 4 колонки:
+            // 1 - название/время/тренер
+            // 2 - описание
+            // 3 - места
+            // 4 - кнопка
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2.4, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2.8, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1.1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1.3, GridUnitType.Star) });
 
             using (AppDbContext db = new AppDbContext())
             {
-                var trainer = db.Users.FirstOrDefault(x => x.UserID == training.TrainerID);
+                User trainer = db.Users
+                    .FirstOrDefault(x => x.UserID == training.TrainerID);
 
-                info.Children.Add(new TextBlock
-                {
-                    Text = "👤 Тренер: " + trainer?.FullName,
-                    Style = (Style)FindResource("CardTextStyle")
-                });
-            }
-
-
-            using (AppDbContext db = new AppDbContext())
-            {
                 int busyPlaces = db.TrainingRegistrations
                     .Count(x => x.TrainingID == training.TrainingID);
 
                 int freePlaces = training.MaxPlaces - busyPlaces;
 
-                info.Children.Add(new TextBlock
+                //--------------------------------------------------
+                // Левая часть
+                //--------------------------------------------------
+
+                StackPanel left = new StackPanel();
+
+                StackPanel top = new StackPanel
                 {
-                    Text = $"👥 Вільно місць: {freePlaces}/{training.MaxPlaces}",
-                    Style = (Style)FindResource("CardTextStyle")
+                    Orientation = Orientation.Horizontal
+                };
+
+                top.Children.Add(new TextBlock
+                {
+                    Text = training.Name,
+                    FontSize = 22,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = new SolidColorBrush(Color.FromRgb(109, 85, 85))
                 });
+
+                top.Children.Add(new TextBlock
+                {
+                    Text = "   |   🕒 " + training.Time,
+                    Margin = new Thickness(15, 4, 0, 0),
+                    FontSize = 15,
+                    Foreground = Brushes.Gray
+                });
+
+                left.Children.Add(top);
+
+                left.Children.Add(new TextBlock
+                {
+                    Text = "👤Тренер: " + trainer.FullName,
+                    Margin = new Thickness(0, 10, 0, 0),
+                    FontSize = 15,
+                    Foreground = Brushes.DimGray
+                });
+
+                Grid.SetColumn(left, 0);
+                grid.Children.Add(left);
+
+                //--------------------------------------------------
+                // Описание
+                //--------------------------------------------------
+
+                TextBlock description = new TextBlock
+                {
+                    Text = training.Description,
+                    Margin = new Thickness(25, 0, 20, 0),
+                    TextWrapping = TextWrapping.Wrap,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    FontSize = 14,
+                    Foreground = Brushes.Gray,
+                    MaxHeight = 60
+                };
+
+                Grid.SetColumn(description, 1);
+                grid.Children.Add(description);
+
+                //--------------------------------------------------
+                // Места
+                //--------------------------------------------------
+
+                Border placesBorder = new Border
+                {
+                    Background = new SolidColorBrush(Color.FromRgb(252, 238, 238)),
+                    CornerRadius = new CornerRadius(12),
+                    Padding = new Thickness(12, 8, 12, 8),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                placesBorder.Child = new TextBlock
+                {
+                    Text = $"👥\n{freePlaces}/{training.MaxPlaces}",
+                    FontWeight = FontWeights.Bold,
+                    TextAlignment = TextAlignment.Center,
+                    Foreground = new SolidColorBrush(Color.FromRgb(109, 85, 85))
+                };
+
+                Grid.SetColumn(placesBorder, 2);
+                grid.Children.Add(placesBorder);
+
+                //--------------------------------------------------
+                // Кнопка
+                //--------------------------------------------------
+
+                Button btn = new Button
+                {
+                    Content = "Записатися",
+                    Width = 120,
+                    Height = 40,
+                    Tag = training,
+                    Style = (Style)FindResource("PrimaryButtonStyle"),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                btn.Click += RegisterTraining_Click;
+
+                Grid.SetColumn(btn, 3);
+                grid.Children.Add(btn);
             }
-
-
-
-            grid.Children.Add(info);
-
-
-
-            Button btn = new Button
-            {
-                Content = "Записатися",
-                Width = 130,
-                Height = 40,
-                Style =
-                (Style)FindResource("PrimaryButtonStyle"),
-                Tag = training
-            };
-
-
-            btn.Click += RegisterTraining_Click;
-
-
-
-            Grid.SetColumn(btn, 1);
-
-
-            grid.Children.Add(btn);
-
-
 
             card.Child = grid;
 
-
-
             TrainingsPanel.Children.Add(card);
-
         }
 
 

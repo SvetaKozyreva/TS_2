@@ -86,7 +86,8 @@ namespace TS_2.Views.Pages
                         Content = "Скасувати запис",
                         Width = 160,
                         Height = 38,
-                        Margin = new Thickness(0, 20, 0, 0)
+                        Margin = new Thickness(0, 20, 0, 0),
+                        Style = (Style)FindResource("PrimaryButtonStyle")
                     };
 
                     cancelButton.Tag = registration;

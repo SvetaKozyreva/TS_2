@@ -98,6 +98,7 @@ namespace TS_2.Views.Pages
             Training training = (Training)TrainingsGrid.SelectedItem;
 
             NavigationService.Navigate(new AdminTrainingDetailsPage(training));
+
         }
 
     }
