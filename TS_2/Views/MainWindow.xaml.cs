@@ -74,6 +74,7 @@ namespace TS_2.Views
             ScheduleButton.Style = (Style)FindResource("MenuButtonStyle");
             EventsButton.Style = (Style)FindResource("MenuButtonStyle");
             AbonementsButton.Style = (Style)FindResource("MenuButtonStyle");
+            AdminButton.Style = (Style)FindResource("MenuButtonStyle");
 
             if (activeButton != null)
             {
@@ -94,8 +95,9 @@ namespace TS_2.Views
         }
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            PageTitle.Text = "Адмін-панель";
-            MainFrame.Navigate(new AdminPage());
+            OpenPage(new AdminPage(),
+             "Адмін-панель",
+             AdminButton);
         }
         public void UpdateUser()
         {
@@ -123,6 +125,29 @@ namespace TS_2.Views
         {
             MainFrame.Navigate(page);
             PageTitle.Text = title;
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                MainFrame.GoBack();
+                UpdateNavigationButtons();
+            }
+        }
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoForward)
+            {
+                MainFrame.GoForward();
+                UpdateNavigationButtons();
+            }
+        }
+
+        private void UpdateNavigationButtons()
+        {
+            BackButton.IsEnabled = MainFrame.CanGoBack;
+            ForwardButton.IsEnabled = MainFrame.CanGoForward;
         }
 
 

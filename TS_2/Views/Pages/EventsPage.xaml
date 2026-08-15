@@ -1,14 +1,114 @@
 ﻿<Page x:Class="TS_2.Views.Pages.EventsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TS_2.Views.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      Background="#FFFDFD"
       Title="EventsPage">
 
-    <Grid>
-        
+    <Grid Background="#FFFDFD">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Margin="25">
+
+                <!-- Заголовок -->
+                <TextBlock Text="⭐ Події"
+                           Style="{StaticResource PageTitleStyle}"
+                           Margin="0,0,0,25"/>
+
+                <!-- Якщо подій немає -->
+                <TextBlock x:Name="EmptyText"
+                           Text="Поки що немає запланованих подій"
+                           FontSize="18"
+                           Foreground="#8A7777"
+                           HorizontalAlignment="Center"
+                           Margin="0,30,0,0"
+                           Visibility="Collapsed"/>
+
+                <!-- Список подій -->
+                <ItemsControl x:Name="EventsList">
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border Background="White"
+                                    CornerRadius="15"
+                                    Padding="18"
+                                    Margin="0,0,0,15"
+                                    Style="{StaticResource CardStyle}">
+
+                                <StackPanel>
+
+                                    <!-- Назва події -->
+                                    <TextBlock Text="{Binding Title}"
+                                               FontSize="22"
+                                               FontWeight="SemiBold"
+                                               Foreground="#6D5555"
+                                               TextWrapping="Wrap"
+                                               Margin="0,0,0,10"/>
+
+                                    <!-- Дата та кількість учасників -->
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0,0,0,10">
+
+                                        <TextBlock Text="📅"
+                                                   FontSize="18"
+                                                   Margin="0,0,5,0"/>
+
+                                        <TextBlock Text="{Binding Date}"
+                                                   FontSize="16"
+                                                   Foreground="#6D5555"
+                                                   Margin="0,0,25,0"/>
+
+                                        <TextBlock Text="👥"
+                                                   FontSize="18"
+                                                   Margin="0,0,5,0"/>
+
+                                        <TextBlock Text="{Binding ParticipantsInfo}"
+                                                   FontSize="16"
+                                                   Foreground="#6D5555"/>
+
+                                    </StackPanel>
+
+                                    <!-- Опис -->
+                                    <TextBlock Text="{Binding Description}"
+                                               FontSize="14"
+                                               Foreground="#806F6F"
+                                               TextWrapping="Wrap"
+                                               Margin="0,0,0,15"/>
+
+                                    <!-- Ціна та кнопка -->
+                                    <Grid>
+
+                                        <TextBlock Text="{Binding PriceText}"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="#C86D6D"
+                                                   VerticalAlignment="Center"/>
+
+                                        <Button Content="{Binding ButtonText}"
+                                                Tag="{Binding}"
+                                                HorizontalAlignment="Right"
+                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                Click="EventButton_Click"
+                                                Padding="20,8"/>
+
+                                    </Grid>
+
+                                </StackPanel>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
     </Grid>
+
 </Page>

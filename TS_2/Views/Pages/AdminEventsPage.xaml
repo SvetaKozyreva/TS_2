@@ -1,14 +1,130 @@
 ﻿<Page x:Class="TS_2.Views.Pages.AdminEventsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TS_2.Views.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminEventsPage">
 
-    <Grid>
-        
+    <Grid Background="#FFF8F8">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Margin="30">
+
+                <!-- Заголовок -->
+                <TextBlock Text="⭐ Керування подіями"
+                           FontSize="30"
+                           FontWeight="SemiBold"
+                           Foreground="#6D5555"
+                           Margin="0,0,0,25"/>
+
+                <!-- Кнопка додавання -->
+                <Button Content="+ Додати подію"
+                        Width="180"
+                        Height="42"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,25"
+                        Background="#C86D6D"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="AddEvent_Click"/>
+
+                <!-- Список подій -->
+                <ItemsControl x:Name="EventsList">
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border Background="White"
+                                    CornerRadius="12"
+                                    Padding="20"
+                                    Margin="0,0,0,15"
+                                    BorderBrush="#F0DADA"
+                                    BorderThickness="1">
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Інформація -->
+                                    <StackPanel>
+
+                                        <TextBlock Text="{Binding Title}"
+                                                   FontSize="21"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="#6D5555"/>
+
+                                        <TextBlock Text="{Binding Description}"
+                                                   Margin="0,8,0,8"
+                                                   Foreground="#777"
+                                                   TextWrapping="Wrap"/>
+
+                                        <TextBlock Text="{Binding Date}"
+                                                   Foreground="#8C7070"/>
+
+                                        <TextBlock Text="{Binding ParticipantsInfo}"
+                                                   Foreground="#8C7070"
+                                                   Margin="0,4,0,0"/>
+
+                                        <TextBlock Text="{Binding PriceText}"
+                                                   Foreground="#C86D6D"
+                                                   FontWeight="SemiBold"
+                                                   Margin="0,4,0,0"/>
+
+                                    </StackPanel>
+
+                                    <!-- Кнопки -->
+                                    <StackPanel Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                Margin="20,0,0,0">
+
+                                        <Button Content="Гості"
+                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                Tag="{Binding}"
+                                                Click="Guests_Click"
+                                                Margin="0,0,0,7"
+                                                Width="110"
+                                                Height="34"/>
+
+                                        <Button Content="Редагувати"
+                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                Tag="{Binding}"
+                                                Click="EditEvent_Click"
+                                                Margin="0,0,0,7"
+                                                Width="110"
+                                                Height="34"/>
+
+                                        <Button Content="Видалити"
+                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                Tag="{Binding}"
+                                                Click="DeleteEvent_Click"
+                                                Width="110"
+                                                Height="34"/>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+                <TextBlock x:Name="EmptyText"
+                           Text="Подій поки немає."
+                           FontSize="16"
+                           Foreground="#888"
+                           HorizontalAlignment="Center"
+                           Margin="0,30,0,0"
+                           Visibility="Collapsed"/>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
     </Grid>
+
 </Page>
